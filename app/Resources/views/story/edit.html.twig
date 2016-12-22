@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Story edit</h1>
+
+    <ul class="list-inline">
+        <li>
+            <a href="{{ path('story_show', { 'id': story.id }) }}">View the story</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+            <input class="btn btn-link" type="submit" value="Delete"
+                   onclick="return confirm('Are you sure you want to delete this story?')">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+
+    {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+        <input class="btn btn-primary" type="submit" value="Update Story" />
+    {{ form_end(edit_form) }}
+
+{% endblock %}

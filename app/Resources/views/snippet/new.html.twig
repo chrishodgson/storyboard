@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Snippet creation</h1>
+
+    <ul class="list-inline">
+        <li>
+            <a href="{{ path('story_show', { 'id': story.id }) }}">View the story</a>
+        </li>
+    </ul>
+
+    <ul class="text-danger">
+        <li>TODO: syntax highlight editor</li>
+    </ul>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input class="btn btn-primary" type="submit" value="Create Snippet" />
+    {{ form_end(form) }}
+
+{% endblock %}

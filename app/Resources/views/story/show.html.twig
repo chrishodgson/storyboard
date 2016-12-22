@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>#{{ story.id }} {{ story.title }}</h1>
+
+    <ul class="list-inline">
+        <li>
+            <a href="{{ path('story_index') }}">List of stories</a>
+        </li>
+        <li>
+            <a href="{{ path('story_edit', { 'id': story.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+            <input class="btn-link " type="submit" value="Delete"
+                   onclick="return confirm('Are you sure you want to delete this story?')">
+            {{ form_end(delete_form) }}
+        </li>
+        <li>
+            <a href="{{ path('snippet_new', { 'id': story.id }) }}">New snippet</a>
+        </li>
+    </ul>
+
+    <ul class="text-danger">
+        <li>TODO: download prism library with support for sql and bash</li>
+    </ul>
+
+    {% for snippet in story.snippets %}
+        <div class="{{ cycle(['row', ''], snippet.id) }}">
+            <div class="col-xs-6">
+                <div>
+                    ({{ snippet.position }}) <strong>{{ snippet.title }}</strong>
+                    <code>{{ snippet.language.title }}</code>
+                    <ul class="list-inline">
+                        <li>
+                            <a href="{{ path('snippet_edit', { 'id': snippet.id }) }}">edit</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('snippet_show', { 'id': snippet.id }) }}">show</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>{{ snippet.description }}</div>
+                <hr class="spacer" />
+                <pre><code class="language-{{ snippet.language.title}}">{{ snippet.code }}</code></pre>
+                <hr class="spacer2" />
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}

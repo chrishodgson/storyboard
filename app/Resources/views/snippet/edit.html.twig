@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Snippet edit</h1>
+
+    <ul class="list-inline">
+        <li>
+            <a href="{{ path('story_show', { 'id': snippet.story.id }) }}">View the story</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+            <input class="btn btn-link" type="submit" value="Delete"
+                onclick="return confirm('Are you sure you want to delete this snippet?')">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+
+    <ul class="text-danger">
+        <li>TODO: syntax highlight editor - ace.c9.io</li>
+        <li>TODO: validate fields</li>
+    </ul>
+
+    {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+        <input class="btn btn-primary" type="submit" value="Update Snippet" />
+    {{ form_end(edit_form) }}
+
+{% endblock %}

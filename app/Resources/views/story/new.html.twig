@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Story creation</h1>
+
+    <ul class="list-inline">
+        <li>
+            <a href="{{ path('story_index') }}">List of stories</a>
+        </li>
+    </ul>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input class="btn btn-primary" type="submit" value="Create Story" />
+    {{ form_end(form) }}
+
+{% endblock %}

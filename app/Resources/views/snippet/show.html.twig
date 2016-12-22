@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Snippet</h1>
+
+    <ul class="list-inline">
+        <li>
+            <a href="{{ path('story_show', { 'id': snippet.story.id }) }}">View the story</a>
+        </li>
+        <li>
+            <a href="{{ path('snippet_edit', { 'id': snippet.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+            <input class="btn btn-link" type="submit" value="Delete"
+                onclick="return confirm('Are you sure you want to delete this snippet?')">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+
+    <ul class="text-danger">
+        <li>TODO: syntax highlight editor</li>
+    </ul>
+
+
+    <table class="table table-striped table-condensed">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ snippet.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ snippet.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ snippet.description }}</td>
+            </tr>
+            <tr>
+                <th>Story</th>
+                <td>{{ snippet.story.title }}</td>
+            </tr>
+            <tr>
+                <th>Language</th>
+                <td>{{ snippet.language.title }}</td>
+            </tr>
+            <tr>
+                <th>Code</th>
+                <td><pre><code class="language-{{ snippet.language.title}}">{{ snippet.code }}</code></pre></td>
+            </tr>
+            <tr>
+                <th>Position</th>
+                <td>{{ snippet.position }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+{% endblock %}
