@@ -1,0 +1,42 @@
+h1 {
+    font-size: 1.35em
+}
+hr.spacer{
+    margin:10px 0;
+    border:0;
+}
+hr.spacer2{
+    margin:20px 0;
+    border:0;
+}
+
+.form-inline {
+    margin: 10px 0
+}
+.form-inline .form-control {
+    margin-right: 10px
+}
+
+.list-inline {
+    padding-left: 20px;
+    display: inline-block;
+}
+.list-inline form {
+    display: inline;
+}
+.list-inline .btn-link {
+    padding:0; border:0;
+}
+.list-inline > li {
+    padding:0;
+}
+.list-inline > li {
+    display: inline;
+}
+.list-inline > li:after {
+    content: ' | ';
+}
+.list-inline > li:last-child:after {
+    content: '';
+}
+
