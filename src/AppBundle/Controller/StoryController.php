@@ -24,6 +24,7 @@ class StoryController extends Controller
      */
     public function indexAction(Request $request)
     {
+        $logger = $this->get('logger');
         $em = $this->getDoctrine()->getManager();
 
         $searchFormData = $request->get('appbundle_story_search');
@@ -43,6 +44,10 @@ class StoryController extends Controller
 
         // filter by search text
         if(count($searchTerms) > 0){
+            $logger->info('You searched for the following terms', array(
+                'terms' => $searchTerms,
+            ));
+
             foreach ($searchTerms as $key => $searchTerm) {
                 $query->andWhere('s.title LIKE :searchTerm' . $key)
                     ->setParameter('searchTerm' . $key, '%' . $searchTerm . '%');

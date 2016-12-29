@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Snippet
@@ -25,13 +26,14 @@ class Snippet
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $title;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 
@@ -39,13 +41,14 @@ class Snippet
      * @var string
      *
      * @ORM\Column(name="code", type="text")
+     * @Assert\NotBlank()
      */
     private $code;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="position", type="smallint")
+     * @ORM\Column(name="position", type="smallint", options={"default":0})
      */
     private $position;
 
@@ -53,6 +56,7 @@ class Snippet
      * Many Snippets have One Story (owning side)
      * @ORM\ManyToOne(targetEntity="Story", inversedBy="snippets")
      * @ORM\JoinColumn(name="story_id", referencedColumnName="id", onDelete="CASCADE")
+     * @Assert\NotBlank()
      */
     private $story;
 
@@ -60,6 +64,7 @@ class Snippet
      * Many Snippets have One Language (owning side)
      * @ORM\ManyToOne(targetEntity="Language", inversedBy="snippets")
      * @ORM\JoinColumn(name="language_id", referencedColumnName="id", onDelete="CASCADE")
+     * @Assert\NotBlank()
      */
     private $language;
 
