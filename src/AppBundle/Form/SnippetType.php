@@ -19,7 +19,7 @@ class SnippetType extends AbstractType
             ->add('description', null, ['attr'=>['rows'=>3]])
             ->add('language', null, ['placeholder' => 'Choose a language'])
             ->add('code', null, ['attr'=>['rows'=>15]])
-            ->add('position');
+            ->add('position', null, ['data' => 0]);
     }
     
     /**

@@ -34,7 +34,7 @@ class Story
     /**
      * One Story has Many Snippets (non owning side).
      * @ORM\OneToMany(targetEntity="Snippet", mappedBy="story", cascade={"remove"})
-     * @ORM\OrderBy({"position" = "ASC"})
+     * @ORM\OrderBy({"position" = "DESC"})
      */
     private $snippets;
 
