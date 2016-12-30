@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    {% set story = pagination[0].story %}
+
     <h1>#{{ story.id }} {{ story.title }}</h1>
 
     <ul class="list-inline">
@@ -21,31 +23,39 @@
         </li>
     </ul>
 
-    <ul class="text-danger">
-        <li>TODO: download prism library with support for sql and bash</li>
-    </ul>
+    <p>Total Snippets: {{ pagination.getTotalItemCount }}</p>
 
-    {% for snippet in story.snippets %}
-        <div class="{{ cycle(['row', ''], snippet.id) }}">
+    {% for row in pagination|batch(2) %}
+
+        <div class="row">
+        {% for snippet in row %}
             <div class="col-xs-6">
                 <div>
-                    ({{ snippet.position }}) <strong>{{ snippet.title }}</strong>
-                    <code>{{ snippet.language.title }}</code>
-                    <ul class="list-inline">
-                        <li>
-                            <a href="{{ path('snippet_edit', { 'id': snippet.id }) }}">edit</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('snippet_show', { 'id': snippet.id }) }}">show</a>
-                        </li>
-                    </ul>
+                    <strong title="snippet position: {{ snippet.position }}">{{ snippet.title }}</strong>
+                    <small>
+                        <code>{{ snippet.language.title }}</code>
+                        <ul class="list-inline">
+                            <li>
+                                <a href="{{ path('snippet_edit', { 'id': snippet.id }) }}">edit</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('snippet_show', { 'id': snippet.id }) }}">show</a>
+                            </li>
+                        </ul>
+                    </small>
                 </div>
                 <div>{{ snippet.description }}</div>
                 <hr class="spacer" />
                 <pre><code class="language-{{ snippet.language.title}}">{{ snippet.code }}</code></pre>
                 <hr class="spacer2" />
             </div>
+        {% endfor %}
         </div>
+
     {% endfor %}
+
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
 
 {% endblock %}

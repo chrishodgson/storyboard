@@ -131,12 +131,28 @@ class StoryController extends Controller
      * @Route("/{id}", name="story_show")
      * @Method("GET")
      */
-    public function showAction(Story $story)
+    public function showAction(Request $request, Story $story)
     {
+        $em = $this->getDoctrine()->getManager();
+        $repository = $em->getRepository('AppBundle:Snippet');
+
+        $query = $repository->createQueryBuilder('s')
+            ->where('s.story = :story')
+            ->setParameter('story', $story->getId());
+
+        // paginate the query and get the results
+        $paginator  = $this->get('knp_paginator');
+
+        $pagination = $paginator->paginate(
+            $query, /* query NOT result */
+            $request->query->getInt('page', 1) /*page number*/,
+            10 /*limit per page*/
+        );
+
         $deleteForm = $this->createDeleteForm($story);
 
         return $this->render('story/show.html.twig', array(
-            'story' => $story,
+            'pagination' => $pagination,
             'delete_form' => $deleteForm->createView(),
         ));
     }
