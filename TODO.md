@@ -1,22 +1,20 @@
 
 docs
 ===
-
-- how to create the database
-- how to run the dataFixtures
+- how to create data fixtures just for languages without the test stories
 
 
-digital storm bugs
+bugs
 ===
 
 - show story causes a pagination error 
 - no languages listed in add snippet screen
 - clicking the app name links to wrong place ie http://symfony3_snippets.dev/
 
-
-new features
+development
 ===
 
-- favorite snippets
-- favorite stories
-- created_at, updated_at fields
+- created_at, updated_at db fields using symfony migrations budle
+- yaml routes
+- unit tests
+- favorite stories / snippets
