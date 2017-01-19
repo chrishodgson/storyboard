@@ -13,7 +13,9 @@ class LoadLanguageData extends AbstractFixture implements OrderedFixtureInterfac
     /**
      * array
      */
-    const LANGUAGES = ['php', 'javascript', 'sql', 'css'];
+    const LANGUAGES = [
+        'php', 'javascript', 'sql', 'css', 'bash', 'docker', 'git', 'http', 'yaml', 'json', 'ini', 'apacheconf', 'twig'
+    ];
 
     /**
      * @param ObjectManager $manager
