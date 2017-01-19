@@ -1,7 +1,14 @@
+Requirements
+===
+- Mysql database
+- PHP >=7
+- composer
+
 Install
 ===
 
-- git clone https://github.com/chrishodgson/storyboard.git
+- git clone https://github.com/chrishodgson/storyboard.git # or download
+- composer install 
 - php bin/console doctrine:database:create
 - php bin/console doctrine:schema:update --force
 - php bin/console doctrine:fixtures:load --fixtures=src/AppBundle/DataFixtures/ORM/LookupData --append
