@@ -1,7 +1,7 @@
 <?php
 
-// src/AppBundle/DataFixtures/ORM/Test/LoadSnippetData.php
-namespace AppBundle\DataFixtures\ORM;
+// src/AppBundle/DataFixtures/ORM/DummyData/LoadSnippetData.php
+namespace AppBundle\DataFixtures\ORM\DummyData;
 
 use AppBundle\Entity\Snippet;
 use AppBundle\Entity\Story;

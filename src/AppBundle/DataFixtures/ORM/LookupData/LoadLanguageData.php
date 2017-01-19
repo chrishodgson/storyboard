@@ -1,7 +1,7 @@
 <?php
 
-// src/AppBundle/DataFixtures/ORM/LoadLanguageData.php
-namespace AppBundle\DataFixtures\ORM;
+// src/AppBundle/DataFixtures/ORM/LookupData/LoadLanguageData.php
+namespace AppBundle\DataFixtures\ORM\LookupData;
 
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
