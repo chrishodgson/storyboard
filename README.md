@@ -1,10 +1,16 @@
-Requirements
+Description
+===
+This is a web application build using the Symfony 3 PHP framework which allows you to store code snippets grouped 
+into stories.
+
+
+System requirements
 ===
 - Mysql database
 - PHP >=7
 - composer
 
-Install
+Installation instructions
 ===
 
 - git clone https://github.com/chrishodgson/storyboard.git # or download
@@ -13,10 +19,10 @@ Install
 - php bin/console doctrine:schema:update --force
 - php bin/console doctrine:fixtures:load --fixtures=src/AppBundle/DataFixtures/ORM/LookupData --append
 
-Command line options
+Useful command line options
 ===
 
-cd to the top level folder (ie storyboard) ...
+From the folder where you installed the application (ie storyboard) ...
 
 - Create Database using symfony config
 php bin/console doctrine:database:create
