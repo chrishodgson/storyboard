@@ -1,16 +1,15 @@
 Install
 ===
 
-git clone 
-
-php bin/console doctrine:database:create
-php bin/console doctrine:schema:update --force
-php bin/console doctrine:fixtures:load --fixtures=src/AppBundle/DataFixtures/ORM/LookupData --append
+- git clone https://github.com/chrishodgson/storyboard.git
+- php bin/console doctrine:database:create
+- php bin/console doctrine:schema:update --force
+- php bin/console doctrine:fixtures:load --fixtures=src/AppBundle/DataFixtures/ORM/LookupData --append
 
 Command line options
 ===
 
-From the main storyboard folder...
+cd to the top level folder (ie storyboard) ...
 
 - Create Database using symfony config
 php bin/console doctrine:database:create
