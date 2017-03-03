@@ -1,4 +1,8 @@
 
+Bugs
+===
+- fix the masonary layout 
+
 New features
 ===
 - favorite stories / snippets (use migrations bundle)
