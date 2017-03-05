@@ -19,7 +19,7 @@
 
 
 #your folders to backup
-    FOLDERS=(  '/var/www'  )
+    FOLDERS=(  '/home/chris/storyboard'  )
 
  #Testmode# if you aren't sure just leave this #######
  #use MODE='-v' to see some output for testing
