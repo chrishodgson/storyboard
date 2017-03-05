@@ -9,11 +9,10 @@
 . env.sh
 
 #DBHOST='localhost'
-#DBUSER='your_mysql_user'
-#DBPW='youruserspassword'
-
+#DBUSER='root'
+#DBPW=''
 #for individual databases uncomment this and put in the name of your database :
-#DBNAME=(  'your_database' )
+#DBNAME=('storyboard')
 
 #for all databases the user has access to, keep this uncommented:
    DBNAME=( `echo "show databases" |  mysql --user=$DBUSER --password=$DBPW --host=$DBHOST  | tail -n+3 `)
