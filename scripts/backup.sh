@@ -8,18 +8,17 @@
 # source the following settings from file env.sh
 . env.sh
 
+# database options
 #DBHOST='localhost'
 #DBUSER='root'
 #DBPW=''
 #for individual databases uncomment this and put in the name of your database :
 #DBNAME=('storyboard')
-
 #for all databases the user has access to, keep this uncommented:
-   DBNAME=( `echo "show databases" |  mysql --user=$DBUSER --password=$DBPW --host=$DBHOST  | tail -n+3 `)
+#DBNAME=( `echo "show databases" |  mysql --user=$DBUSER --password=$DBPW --host=$DBHOST  | tail -n+3 `)
 
-
-#your folders to backup
-    FOLDERS=(  '/home/chris/storyboard'  )
+# folders to backup
+#FOLDERS=(  '/home/chris/storyboard'  )
 
  #Testmode# if you aren't sure just leave this #######
  #use MODE='-v' to see some output for testing
