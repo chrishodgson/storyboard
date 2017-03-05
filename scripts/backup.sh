@@ -8,12 +8,10 @@
 # source the following settings from file env.sh
 . env.sh
 
-#your database info####
 #DBHOST='localhost'
 #DBUSER='your_mysql_user'
-
 #DBPW='youruserspassword'
-#your databases
+
 #for individual databases uncomment this and put in the name of your database :
 #DBNAME=(  'your_database' )
 

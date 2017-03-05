@@ -15,4 +15,4 @@
 /vendor/
 /web/bundles/
 .idea
-scripts/PASSWD
+scripts/env.sh
