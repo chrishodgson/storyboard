@@ -49,14 +49,14 @@ hr.spacer2{
 
 .masonry-item { /* Masonry bricks or child elements */
     display: inline-block;
-    background: #fff;
     padding: 1em;
     margin: 0 0 1.5em;
     width: 100%;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    box-shadow: 2px 2px 4px 0 #ccc;
+    /*box-shadow: 2px 2px 4px 0 #ccc;*/
+    border: 1px solid #eee;
 }
 
 @media only screen and (min-width: 400px) {  }
