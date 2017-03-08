@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {% set story = pagination[0].story %}
 
     <h1>#{{ story.id }} {{ story.title }}</h1>
 
@@ -25,34 +24,35 @@
 
     <p>Total Snippets: {{ pagination.getTotalItemCount }}</p>
 
-
-    <div class="masonry">
-    {% for snippet in pagination %}
-        <div class="masonry-item">
-            <div>
-                <strong title="snippet position: {{ snippet.position }}">{{ snippet.title }}</strong>
-                <small>
-                    <code>{{ snippet.language.title }}</code>
-                    <ul class="list-inline">
-                        <li>
-                            <a href="{{ path('snippet_edit', { 'id': snippet.id }) }}">edit</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('snippet_show', { 'id': snippet.id }) }}">show</a>
-                        </li>
-                    </ul>
-                </small>
+    {% if(pagination.getTotalItemCount) %}
+        <div class="masonry">
+        {% for snippet in pagination %}
+            <div class="masonry-item">
+                <div>
+                    <strong title="snippet position: {{ snippet.position }}">{{ snippet.title }}</strong>
+                    <small>
+                        <code>{{ snippet.language.title }}</code>
+                        <ul class="list-inline">
+                            <li>
+                                <a href="{{ path('snippet_edit', { 'id': snippet.id }) }}">edit</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('snippet_show', { 'id': snippet.id }) }}">show</a>
+                            </li>
+                        </ul>
+                    </small>
+                </div>
+                <div>{{ snippet.description }}</div>
+                <hr class="spacer" />
+                <pre><code class="language-{{ snippet.language.title}}">{{ snippet.code }}</code></pre>
+                <hr class="spacer2" />
             </div>
-            <div>{{ snippet.description }}</div>
-            <hr class="spacer" />
-            <pre><code class="language-{{ snippet.language.title}}">{{ snippet.code }}</code></pre>
-            <hr class="spacer2" />
+        {% endfor %}
         </div>
-    {% endfor %}
-    </div>
 
-    <div class="navigation">
-        {{ knp_pagination_render(pagination) }}
-    </div>
+        <div class="navigation">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    {% endif %}
 
 {% endblock %}

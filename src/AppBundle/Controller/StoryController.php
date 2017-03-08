@@ -153,6 +153,7 @@ class StoryController extends Controller
 
         return $this->render('story/show.html.twig', array(
             'pagination' => $pagination,
+            'story' => $story,
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -214,7 +215,6 @@ class StoryController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('story_delete', array('id' => $story->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }
