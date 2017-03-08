@@ -1,7 +1,7 @@
 
 Bugs
 ===
-- fix the masonary layout 
+- fix the masonary layout / styling
 - fix story bug when no snippet created on story 
 Key "0" in object with ArrayAccess of class 
 "Knp\Bundle\PaginatorBundle\Pagination\SlidingPagination" 
