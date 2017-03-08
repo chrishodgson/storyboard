@@ -1,23 +1,26 @@
 
 Bugs
 ===
-- fix the masonary layout / styling
-- fix story bug when no snippet created on story 
-Key "0" in object with ArrayAccess of class 
-"Knp\Bundle\PaginatorBundle\Pagination\SlidingPagination" 
-does not exist in story/show.html.twig at line 4.
 
-New features
+Features
 ===
 - story project (use migrations bundle), option to filter 
 by project with counts shown in dropdown
-- favorite stories / snippets (use migrations bundle)
+- language dropdown on snippet search with counts 
+- favorite stories / snippets (migrations bundle)
 - option to 'add another snippet' when creating a snippet
-- basic authentication
+- created_at, updated_at db fields on all tables (migrations bundle)
 
-Technical debt
+Security
 ===
-- created_at, updated_at db fields (use migrations bundle)
+- authentication: get users list from parameters file
+
+Testing
+===
+- write unit tests
+- dummy data fixture to create more realistic code snippets
+
+Refactoring
+===
 - replace annotations with yaml routes
-- unit tests
 
