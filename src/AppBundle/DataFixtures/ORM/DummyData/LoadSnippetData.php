@@ -11,13 +11,15 @@ use Doctrine\Common\Persistence\ObjectManager;
 
 class LoadSnippetData extends AbstractFixture implements OrderedFixtureInterface
 {
+    const MAX_CODE_LINES = 20;
     const NUM_STORIES = 10;
     const NUM_SNIPPETS_PER_STORIES = 10;
     const SNIPPET_CODE = [
         'php'=>'print_r($data);',
         'javascript'=>'console.log(a);',
-        'sql'=>'CREATE TABLE snippet ( id int(11) )',
+        'sql'=>'CREATE TABLE snippet ( id int(11) );',
         'css'=>'body { display:none }'
+        //todo add more examples ?
     ];
 
     /**
@@ -28,7 +30,13 @@ class LoadSnippetData extends AbstractFixture implements OrderedFixtureInterface
         //$em = $this->getDoctrine()->getManager();
         $manager->createQuery('DELETE FROM AppBundle:Story')->execute();
 
-        $languages = $manager->getRepository('AppBundle:Language')->findAll();
+        $list = "'" . implode("','", array_keys(self::SNIPPET_CODE)) . "'";
+
+        $dql = 'SELECT l FROM AppBundle:Language l where l.title in ('. $list .')';
+        $languages = $manager->createQuery($dql)->getResult();
+        //$languages = $manager->getRepository('AppBundle:Language')->findAll();
+
+//        print_r($languages);
 
         for($storyCount=1; $storyCount<=self::NUM_STORIES; $storyCount++){
             $faker = \Faker\Factory::create();
@@ -48,7 +56,12 @@ class LoadSnippetData extends AbstractFixture implements OrderedFixtureInterface
 
                 $languageTitle = $snippet->getLanguage()->getTitle();
                 if(true == array_key_exists($languageTitle, self::SNIPPET_CODE)){
-                    $snippet->setCode(self::SNIPPET_CODE[$languageTitle]);
+                    $max = rand(1,self::MAX_CODE_LINES);
+                    $code = '';
+                    for($i=1; $i<=$max; $i++){
+                        $code .= self::SNIPPET_CODE[$languageTitle] . PHP_EOL;
+                    }
+                    $snippet->setCode($code);
                 }
 
                 $snippet->setPosition($snippetCount);
