@@ -45,7 +45,7 @@
        echo "remove db files older than 1 day";
        fi
 
-       find ~/.backups/$SCRIPTNAME/db/*.sql -type f -daystart -mtime +0 -exec rm {} \;
+       find ~/.backups/$SCRIPTNAME/db/*.sql -type f -daystart -mtime +$DAYS -exec rm {} \;
 
        #if running in -v mode(verbose),  give some output
        if [ "$MODE" = "-v" ]; then

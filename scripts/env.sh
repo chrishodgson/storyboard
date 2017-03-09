@@ -11,3 +11,6 @@ DBNAME=('storyboard')
 
 # your folders to backup
 FOLDERS=('/home/chris/storyboard')
+
+# num days of backups to retain
+DAYS=7
