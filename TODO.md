@@ -1,7 +1,6 @@
 
 Setup
 ===
-- check backups **
 - nginx setup **
 
 Bugs
@@ -12,6 +11,7 @@ Features
 ===
 - option to 'add another snippet' when creating a snippet **
 
+- change backup script to retain x number of days 
 - project dropdown with counts on story search (migrations bundle)
 - language dropdown with counts on snippet search (migrations bundle)  
 - favorite stories / snippets (migrations bundle)
