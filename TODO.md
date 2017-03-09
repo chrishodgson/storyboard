@@ -2,16 +2,13 @@
 Setup
 ===
 - nginx setup **
+- change backup script to retain x number of days *** 
 
 Bugs
 ===
-- fix load dummy data to only create snippets for languages examples **
 
 Features
 ===
-- option to 'add another snippet' when creating a snippet **
-
-- change backup script to retain x number of days 
 - project dropdown with counts on story search (migrations bundle)
 - language dropdown with counts on snippet search (migrations bundle)  
 - favorite stories / snippets (migrations bundle)

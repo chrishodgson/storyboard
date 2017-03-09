@@ -7,6 +7,7 @@ use AppBundle\Entity\Story;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -80,6 +81,15 @@ class StoryController extends Controller
         $snippet = new Snippet();
         $snippet->setStory($story);
         $form = $this->createForm('AppBundle\Form\SnippetType', $snippet);
+
+        //add an extra field
+        $form->add('another', CheckboxType::class, [
+            'label' => 'Add another?',
+            'mapped' => false,
+            'required' => false,
+            'attr' => ['checked' => true]
+        ]);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -87,7 +97,11 @@ class StoryController extends Controller
             $em->persist($snippet);
             $em->flush($snippet);
 
-            return $this->redirectToRoute('snippet_show', array('id' => $snippet->getId()));
+            if(true == $form->get('another')->getData()){
+                return $this->redirectToRoute('snippet_new', array('id' => $story->getId()));
+            } else {
+                return $this->redirectToRoute('snippet_show', array('id' => $snippet->getId()));
+            }
         }
 
         return $this->render('snippet/new.html.twig', array(
