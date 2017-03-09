@@ -24,11 +24,11 @@ Useful command line options
 
 From the folder where you installed the application (ie storyboard) ...
 
-- Create Database using symfony config
-php bin/console doctrine:database:create
-
 - Drop Database using symfony config
 php bin/console doctrine:database:drop --force
+
+- Create Database using symfony config
+php bin/console doctrine:database:create
 
 - Generate Database tables using symfony entities
 php bin/console doctrine:schema:update --force

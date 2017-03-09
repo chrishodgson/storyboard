@@ -1,24 +1,29 @@
 
+Setup
+===
+- check backups **
+- nginx setup **
+
 Bugs
 ===
+- fix load dummy data to only create snippets for languages examples **
 
 Features
 ===
-- story project (use migrations bundle), option to filter 
-by project with counts shown in dropdown
-- language dropdown on snippet search with counts 
+- option to 'add another snippet' when creating a snippet **
+
+- project dropdown with counts on story search (migrations bundle)
+- language dropdown with counts on snippet search (migrations bundle)  
 - favorite stories / snippets (migrations bundle)
-- option to 'add another snippet' when creating a snippet
 - created_at, updated_at db fields on all tables (migrations bundle)
 
 Security
 ===
-- authentication: get users list from parameters file
+- authentication: get users list from parameters file **
 
 Testing
 ===
 - write unit tests
-- dummy data fixture to create more realistic code snippets
 
 Refactoring
 ===
