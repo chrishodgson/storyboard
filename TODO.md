@@ -1,27 +1,37 @@
 
-Bugs
+Phase 1
 ===
+- New schema 
+    - favorite table: id, entity_type [story|snippet], entity_id 
+    - snippet table: status_id [draft|active|archived]
+    - project table: id, title 
+    - story table: project_id 
+    - status table: id, title
 
-Features
-===
-- story project (migrations bundle)
-    - dropdown with counts on story search 
-    - project in story listing, add, new, show
-    - trigger to update counts
+- List, Add, Edit, View Stories - add project, favorite 
 
-- language dropdown with counts on snippet search   
-    - trigger to update counts
-    
-- favorite stories / snippets (migrations bundle)
-    - favorite table: id, entity_type [story|snippet], entity_id,  
+- List, Add, Edit, View Snippets - add favorite, status
 
-- created_at, updated_at db fields on all tables (migrations bundle)
-    - trait for populating tables
-
-Testing
-===
 - write unit tests
 
-Refactoring
-===
 - replace annotations with yaml routes
+
+
+Phase 2
+===
+- New schema 
+    - project table: story_count  
+    - language table: snippet_count 
+    - all tables: created_at, updated_at
+
+- Doctrine PrePersist & PreUpdate hooks 
+    http://symfony.com/doc/2.8/doctrine/lifecycle_callbacks.html
+    - language snippet count    
+    - created_at, updated_at    
+    - project story count 
+
+- List, Add, Edit, View Languages
+
+- List, Add, Edit, View Projects
+
+- All Listing - add created_at 

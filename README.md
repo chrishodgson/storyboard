@@ -30,8 +30,12 @@ php bin/console doctrine:database:drop --force
 - Create Database using symfony config
 php bin/console doctrine:database:create
 
-- Generate Database tables using symfony entities
-php bin/console doctrine:schema:update --force
+- Generate Database tables 
+    - using symfony entities
+    php bin/console doctrine:schema:update --force
+
+    - using symfony migrations
+    php bin/console doctrine:migrations:migrate
 
 - Seed the database with lookup data (ie languages) 
 php bin/console doctrine:fixtures:load --fixtures=src/AppBundle/DataFixtures/ORM/LookupData --append
