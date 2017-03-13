@@ -2,15 +2,16 @@
 Phase 1
 ===
 - New schema 
-    - favorite table: id, entity_type [story|snippet], entity_id 
-    - snippet table: status_id [draft|active|archived]
+    - favorite table: id, entity_type [story|snippet], entity_id
+     http://doctrine-orm.readthedocs.io/en/latest/reference/inheritance-mapping.html
+    - snippet table: snippet_status_id 
     - project table: id, title 
     - story table: project_id 
-    - status table: id, title
+    - snippet_status table: id, title [draft|active|archived]
 
 - List, Add, Edit, View Stories - add project, favorite 
 
-- List, Add, Edit, View Snippets - add favorite, status
+- List, Add, Edit, View Snippets - add favorite, snippet_status
 
 - write unit tests
 
