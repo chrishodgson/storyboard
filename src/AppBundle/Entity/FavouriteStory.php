@@ -7,12 +7,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Favourite
+ * FavouriteStory
  *
- * @ORM\Table(name="Favourite")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\FavouriteRepository")
+ * @ORM\Table(name="FavouriteStory")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\FavouriteStoryRepository")
  */
-class Favourite
+class FavouriteStory
 {
     /**
      * @var int
@@ -32,11 +32,10 @@ class Favourite
     private $title;
 
     /**
-     * @todo what shold this be ??
-     * One Favourite has Many Snippets (non owning side)
-     * @ORM\OneToMany(targetEntity="Snippet", mappedBy="Favourite", cascade={"remove"})
+     * One Favourite has Many Stories (non owning side)
+     * @ORM\OneToMany(targetEntity="Story", mappedBy="FavouriteStory", cascade={"remove"})
      */
-    private $snippets;
+    private $stories;
 
     /**
      * Favourite constructor.
@@ -45,7 +44,7 @@ class Favourite
     public function __construct($title=null)
     {
         $this->setTitle($title);
-        $this->snippets = new ArrayCollection;
+        $this->Storys = new ArrayCollection;
         return $this;
     }
 
@@ -86,17 +85,17 @@ class Favourite
     /**
      * @return mixed
      */
-    public function getSnippets()
+    public function getStories()
     {
-        return $this->snippets;
+        return $this->stories;
     }
 
     /**
-     * @param mixed $snippets
+     * @param mixed $stories
      */
-    public function setSnippets($snippets)
+    public function setStories($stories)
     {
-        $this->snippets = $snippets;
+        $this->stories = $stories;
     }
 
     /**
