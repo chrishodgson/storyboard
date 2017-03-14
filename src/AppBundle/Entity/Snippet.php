@@ -69,6 +69,14 @@ class Snippet
     private $language;
 
     /**
+     * Many Snippets have One Status (owning side)
+     * @ORM\ManyToOne(targetEntity="SnippetStatus", inversedBy="snippets")
+     * @ORM\JoinColumn(name="snippet_status_id", referencedColumnName="id", onDelete="CASCADE")
+     * @Assert\NotBlank()
+     */
+    private $snippetStatus;
+
+    /**
      * Get id
      *
      * @return int
@@ -206,5 +214,29 @@ class Snippet
         $this->language = $language;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getSnippetStatus()
+    {
+        return $this->snippetStatus;
+    }
+
+    /**
+     * @param mixed $snippetStatus
+     */
+    public function setSnippetStatus($snippetStatus)
+    {
+        $this->snippetStatus = $snippetStatus;
+    }
+
+    /**
+     * Override toString() method to return the title
+     * @return string name
+     */
+    public function __toString()
+    {
+        return $this->title;
+    }
 }
 

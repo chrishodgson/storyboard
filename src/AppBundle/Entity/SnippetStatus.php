@@ -7,12 +7,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Status
+ * SnippetStatus
  *
- * @ORM\Table(name="Status")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\StatusRepository")
+ * @ORM\Table(name="SnippetStatus")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\SnippetStatusRepository")
  */
-class Status
+class SnippetStatus
 {
     /**
      * @var int
@@ -32,13 +32,13 @@ class Status
     private $title;
 
     /**
-     * One Status has Many Snippets (non owning side)
-     * @ORM\OneToMany(targetEntity="Snippet", mappedBy="Status", cascade={"remove"})
+     * One SnippetStatus has Many Snippets (non owning side)
+     * @ORM\OneToMany(targetEntity="Snippet", mappedBy="SnippetStatus", cascade={"remove"})
      */
     private $snippets;
 
     /**
-     * Status constructor.
+     * SnippetStatus constructor.
      * @param null $title
      */
     public function __construct($title=null)
@@ -63,7 +63,7 @@ class Status
      *
      * @param string $title
      *
-     * @return Status
+     * @return SnippetStatus
      */
     public function setTitle($title)
     {

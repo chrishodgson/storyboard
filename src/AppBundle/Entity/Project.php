@@ -85,17 +85,17 @@ class Project
     /**
      * @return mixed
      */
-    public function getSnippets()
+    public function getStories()
     {
-        return $this->snippets;
+        return $this->stories;
     }
 
     /**
-     * @param mixed $snippets
+     * @param mixed $stories
      */
-    public function setSnippets($snippets)
+    public function setStories($stories)
     {
-        $this->snippets = $snippets;
+        $this->stories = $stories;
     }
 
     /**

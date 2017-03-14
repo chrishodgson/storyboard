@@ -32,6 +32,14 @@ class Story
     private $title;
 
     /**
+     * Many Stories have One Project (owning side)
+     * @ORM\ManyToOne(targetEntity="Project", inversedBy="stories")
+     * @ORM\JoinColumn(name="project_id", referencedColumnName="id", onDelete="CASCADE")
+     * @Assert\NotBlank()
+     */
+    private $project;
+
+    /**
      * One Story has Many Snippets (non owning side).
      * @ORM\OneToMany(targetEntity="Snippet", mappedBy="story", cascade={"remove"})
      * @ORM\OrderBy({"position" = "DESC"})
@@ -95,6 +103,22 @@ class Story
     public function setSnippets($snippets)
     {
         $this->snippets = $snippets;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProject()
+    {
+        return $this->project;
+    }
+
+    /**
+     * @param mixed $project
+     */
+    public function setProject($project)
+    {
+        $this->project = $project;
     }
 
     /**
