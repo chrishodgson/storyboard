@@ -17,10 +17,10 @@ class LoadSnippetData extends AbstractFixture implements OrderedFixtureInterface
     const MAX_CODE_LINES = 20;
     const NUM_STORIES = 10;
     const NUM_SNIPPETS_PER_STORIES = 10;
-    const NUM_FAVOURITE_SNIPPETS = 10;
-    const NUM_FAVOURITE_STORIES = 10;
-    const ACTIVE_SNIPPET_STATUS = 2;
+    const NUM_FAVOURITE_SNIPPETS = 20;
+    const NUM_FAVOURITE_STORIES = 4;
     const NUM_PROJECTS = 4;
+    const ACTIVE_SNIPPET_STATUS = 2;
 
     const SNIPPET_CODE = [
         'php'=>'print_r($data);',
@@ -111,7 +111,7 @@ class LoadSnippetData extends AbstractFixture implements OrderedFixtureInterface
                 $snippet->setPosition($snippetCount);
                 $snippet->setTitle(ucfirst($languageTitle) . ' Snippet' . $snippetCount . ' ' . $faker->sentence(3));
                 $snippet->setDescription($faker->sentence(30));
-                $snippet->setSnippetStatus(self::ACTIVE_SNIPPET_STATUS);
+//                $snippet->setStatus(self::ACTIVE_SNIPPET_STATUS);
 
                 //story association
                 //$story->getSnippets()->add($snippet);
@@ -125,7 +125,7 @@ class LoadSnippetData extends AbstractFixture implements OrderedFixtureInterface
                  */
                 if (rand(0,4) == 0 && $snippetFavouriteCount < self::NUM_FAVOURITE_SNIPPETS) {
                     $favourite = new FavouriteSnippet;
-                    $favourite->setStory($snippet);
+                    $favourite->setSnippet($snippet);
                     $manager->persist($favourite);
                     $manager->flush();
                     $snippetFavouriteCount++;
