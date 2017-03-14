@@ -1,18 +1,18 @@
 
 Phase 1
 ===
-- Data Fixture: snippet_status [draft|active|archived]
+Fixtures
+    - Change Data Dummy Data Fixture to add snippet_statuses
+    - Change Data Dummy Data Fixture to add projects
+    - New Data Lookups Fixture for snippet_statuses [draft|active|archived]
 
-- Data Fixture: favorite_story, favorite_snippet
+Screens
+    - List, Add, Edit, View Stories - add project, favorite 
+    - List, Add, Edit, View Snippets - add favorite, snippet_status
 
-- List, Add, Edit, View Stories - add project, favorite 
-
-- List, Add, Edit, View Snippets - add favorite, snippet_status
-
-- write unit tests
-
-- replace annotations with yaml routes
-
+Refactoring
+    - replace annotations with yaml routes
+    - write unit tests
 
 Phase 2
 ===

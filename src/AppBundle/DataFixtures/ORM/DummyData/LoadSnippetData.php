@@ -14,6 +14,9 @@ class LoadSnippetData extends AbstractFixture implements OrderedFixtureInterface
     const MAX_CODE_LINES = 20;
     const NUM_STORIES = 10;
     const NUM_SNIPPETS_PER_STORIES = 10;
+    const NUM_FAVOURITE_SNIPPETS = 10;
+    const NUM_FAVOURITE_STORIES = 10;
+
     const SNIPPET_CODE = [
         'php'=>'print_r($data);',
         'javascript'=>'console.log(a);',
@@ -27,10 +30,16 @@ class LoadSnippetData extends AbstractFixture implements OrderedFixtureInterface
      */
     public function load(ObjectManager $manager)
     {
+        $snippetFavouriteCount = 0;
+        $storyFavouriteCount = 0;
+
         //$em = $this->getDoctrine()->getManager();
         $manager->createQuery('DELETE FROM AppBundle:Story')->execute();
 
         $list = "'" . implode("','", array_keys(self::SNIPPET_CODE)) . "'";
+
+        //todo
+        //$statuses = $manager->getRepository('AppBundle:Status')->findAll();
 
         $dql = 'SELECT l FROM AppBundle:Language l where l.title in ('. $list .')';
         $languages = $manager->createQuery($dql)->getResult();
@@ -44,6 +53,14 @@ class LoadSnippetData extends AbstractFixture implements OrderedFixtureInterface
             $story->setTitle('Story ' . $storyCount . ' ' . $faker->sentence(3));
             $manager->persist($story);
             $manager->flush();
+
+            if ($storyFavouriteCount < self::NUM_FAVOURITE_STORIES) {
+                $favourite = new StoryFavourite;
+                $favourite->setStory($story);
+                $manager->persist($favourite);
+                $manager->flush();
+                $storyFavouriteCount++;
+            }
 
             for($snippetCount=1; $snippetCount<=self::NUM_SNIPPETS_PER_STORIES; $snippetCount++){
                 $snippet = new Snippet;
@@ -74,6 +91,15 @@ class LoadSnippetData extends AbstractFixture implements OrderedFixtureInterface
 
                 $manager->persist($snippet);
                 $manager->flush();
+
+                if (rand(0,4) == 0 && $snippetFavouriteCount < self::NUM_FAVOURITE_SNIPPETS) {
+                    $favourite = new SnippetFavourite;
+                    $favourite->setStory($snippet);
+                    $manager->persist($favourite);
+                    $manager->flush();
+                    $snippetFavouriteCount++;
+                }
+
             }
         }
     }

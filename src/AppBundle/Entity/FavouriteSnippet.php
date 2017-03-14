@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * FavouriteSnippet
  *
- * @ORM\Table(name="FavouriteSnippet")
+ * @ORM\Table(name="favourite_snippet")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\FavouriteSnippetRepository")
  */
 class FavouriteSnippet
