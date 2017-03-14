@@ -44,7 +44,7 @@ class SnippetStatus
     public function __construct($title=null)
     {
         $this->setTitle($title);
-        $this->stories = new ArrayCollection;
+        $this->snippets = new ArrayCollection;
         return $this;
     }
 

@@ -47,6 +47,12 @@ class Story
     private $snippets;
 
     /**
+     * One Story has One Favourite.
+     * @ORM\OneToOne(targetEntity="FavouriteStory", mappedBy="story")
+     */
+    private $favourite;
+
+    /**
      * Story constructor.
      */
     public function __construct()
@@ -119,6 +125,22 @@ class Story
     public function setProject($project)
     {
         $this->project = $project;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFavourite()
+    {
+        return $this->favourite;
+    }
+
+    /**
+     * @param mixed $favourite
+     */
+    public function setFavourite($favourite)
+    {
+        $this->favourite = $favourite;
     }
 
     /**

@@ -37,7 +37,7 @@ php bin/console doctrine:database:create
     - using symfony migrations
     php bin/console doctrine:migrations:migrate
 
-- Seed the database with lookup data (ie languages) 
+- Seed the database with lookup data (ie languages, statuses) 
 php bin/console doctrine:fixtures:load --fixtures=src/AppBundle/DataFixtures/ORM/LookupData --append
 
 - Seed the database with dummy data (ie stories & snippets)

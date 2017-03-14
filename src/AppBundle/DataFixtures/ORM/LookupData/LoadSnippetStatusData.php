@@ -1,21 +1,20 @@
 <?php
 
-// src/AppBundle/DataFixtures/ORM/LookupData/LoadLanguageData.php
+// src/AppBundle/DataFixtures/ORM/LookupData/LoadSnippetStatusData.php
 namespace AppBundle\DataFixtures\ORM\LookupData;
 
+use AppBundle\Entity\SnippetStatus;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use AppBundle\Entity\Language;
 
-class LoadLanguageData extends AbstractFixture implements OrderedFixtureInterface
+class LoadSnippetStatusData extends AbstractFixture implements OrderedFixtureInterface
 {
     /**
      * array
      */
-    const LANGUAGES = [
-        'php', 'javascript', 'sql', 'css', 'bash', 'docker', 'git',
-        'http', 'yaml', 'json', 'ini', 'apacheconf', 'twig'
+    const STATUSES = [
+        'draft', 'active', 'archived'
     ];
 
     /**
@@ -23,16 +22,16 @@ class LoadLanguageData extends AbstractFixture implements OrderedFixtureInterfac
      */
     public function load(ObjectManager $manager)
     {
-        foreach(self::LANGUAGES as $title){
+        foreach(self::STATUSES as $title){
 
-            $language = $this->findOrCreateLanguage($title, $manager);
+            $status = $this->findOrCreatestatus($title, $manager);
 
             /** Check if the object is managed (so already exists in the database) **/
-            if (false == $manager->contains($language)) {
-                $manager->persist($language);
+            if (false == $manager->contains($status)) {
+                $manager->persist($status);
             }
 
-//            $entity = new Language;
+//            $entity = new status;
 //            $entity->setTitle($title);
 //            $manager->persist($entity);
         }
@@ -46,13 +45,13 @@ class LoadLanguageData extends AbstractFixture implements OrderedFixtureInterfac
      * @param string        $title
      * @param ObjectManager $manager
      *
-     * @return Language
+     * @return status
      */
-    protected function findOrCreateLanguage($title, ObjectManager $manager)
+    protected function findOrCreateStatus($title, ObjectManager $manager)
     {
-        return $manager->getRepository('AppBundle:Language')
-            ->findOneBy(['title' => $title]) ?: new Language($title);
-//            ->findOneBy(['title' => $title]) ?: (new Language())->setTitle($title);
+        return $manager->getRepository('AppBundle:SnippetStatus')
+            ->findOneBy(['title' => $title]) ?: new SnippetStatus($title);
+//            ->findOneBy(['title' => $title]) ?: (new status())->setTitle($title);
     }
 
     /**

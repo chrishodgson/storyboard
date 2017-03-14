@@ -2,7 +2,6 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -24,29 +23,11 @@ class FavouriteSnippet
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="title", type="string", length=255)
-     * @Assert\NotBlank()
+     * One FavouriteSnippet has One Snippet. (owning side)
+     * @ORM\OneToOne(targetEntity="Snippet", inversedBy="favourite")
+     * @ORM\JoinColumn(name="snippet_id", referencedColumnName="id")
      */
-    private $title;
-
-    /**
-     * One Favourite has Many Snippets (non owning side)
-     * @ORM\OneToMany(targetEntity="Snippet", mappedBy="FavouriteSnippet", cascade={"remove"})
-     */
-    private $snippets;
-
-    /**
-     * Favourite constructor.
-     * @param null $title
-     */
-    public function __construct($title=null)
-    {
-        $this->setTitle($title);
-        $this->snippets = new ArrayCollection;
-        return $this;
-    }
+    private $snippet;
 
     /**
      * Get id
@@ -59,52 +40,19 @@ class FavouriteSnippet
     }
 
     /**
-     * Set title
-     *
-     * @param string $title
-     *
-     * @return Favourite
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * Get title
-     *
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
      * @return mixed
      */
-    public function getSnippets()
+    public function getSnippet()
     {
-        return $this->snippets;
+        return $this->snippet;
     }
 
     /**
-     * @param mixed $snippets
+     * @param mixed $snippet
      */
-    public function setSnippets($snippets)
+    public function setSnippet($snippet)
     {
-        $this->snippets = $snippets;
-    }
-
-    /**
-     * Override toString() method to return the title
-     * @return string name
-     */
-    public function __toString()
-    {
-        return $this->title;
+        $this->snippet = $snippet;
     }
 }
 

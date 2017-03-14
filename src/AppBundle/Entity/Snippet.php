@@ -69,12 +69,18 @@ class Snippet
     private $language;
 
     /**
-     * Many Snippets have One Status (owning side)
+     * Many Snippets have One Snippet Status (owning side)
      * @ORM\ManyToOne(targetEntity="SnippetStatus", inversedBy="snippets")
      * @ORM\JoinColumn(name="snippet_status_id", referencedColumnName="id", onDelete="CASCADE")
      * @Assert\NotBlank()
      */
-    private $snippetStatus;
+    private $status;
+
+    /**
+     * One Snippet has One Favourite.
+     * @ORM\OneToOne(targetEntity="FavouriteSnippet", mappedBy="snippet")
+     */
+    private $favourite;
 
     /**
      * Get id
@@ -217,17 +223,33 @@ class Snippet
     /**
      * @return mixed
      */
-    public function getSnippetStatus()
+    public function getStatus()
     {
-        return $this->snippetStatus;
+        return $this->status;
     }
 
     /**
-     * @param mixed $snippetStatus
+     * @param mixed $status
      */
-    public function setSnippetStatus($snippetStatus)
+    public function setStatus($status)
     {
-        $this->snippetStatus = $snippetStatus;
+        $this->status = $status;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFavourite()
+    {
+        return $this->favourite;
+    }
+
+    /**
+     * @param mixed $favourite
+     */
+    public function setFavourite($favourite)
+    {
+        $this->favourite = $favourite;
     }
 
     /**
