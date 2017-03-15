@@ -14,7 +14,7 @@ class LoadSnippetStatusData extends AbstractFixture implements OrderedFixtureInt
      * array
      */
     const STATUSES = [
-        'draft', 'active', 'archived'
+        'Draft', 'Active', 'Archived'
     ];
 
     /**

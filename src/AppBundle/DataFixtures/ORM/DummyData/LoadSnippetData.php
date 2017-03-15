@@ -36,17 +36,6 @@ class LoadSnippetData extends AbstractFixture implements OrderedFixtureInterface
         $snippetFavouriteCount = 0;
         $storyFavouriteCount = 0;
 
-        /**
-         * create projects
-         */
-//        for($projectCount=1; $projectCount<=self::NUM_PROJECTS; $projectCount++) {
-//            $project = new Project;
-//            $project->setTitle('Project ' . $projectCount);
-//            $manager->persist($project);
-//            $manager->flush();
-//        }
-
-        //$em = $this->getDoctrine()->getManager();
         $manager->createQuery('DELETE FROM AppBundle:Story')->execute();
 
         $list = "'" . implode("','", array_keys(self::SNIPPET_CODE)) . "'";
@@ -55,7 +44,8 @@ class LoadSnippetData extends AbstractFixture implements OrderedFixtureInterface
 
         $dql = 'SELECT l FROM AppBundle:Language l where l.title in ('. $list .')';
         $languages = $manager->createQuery($dql)->getResult();
-        //$languages = $manager->getRepository('AppBundle:Language')->findAll();
+
+        $statuses = $manager->getRepository('AppBundle:SnippetStatus')->findAll();
 
         /**
          * create stories
@@ -93,7 +83,6 @@ class LoadSnippetData extends AbstractFixture implements OrderedFixtureInterface
 
                 //language association
                 $language = current($languages) ? current($languages) : reset($languages);
-                //$language->getSnippets()->add($snippet);
                 $snippet->setLanguage($language);
                 next($languages);
 
@@ -110,11 +99,13 @@ class LoadSnippetData extends AbstractFixture implements OrderedFixtureInterface
                 $snippet->setPosition($snippetCount);
                 $snippet->setTitle(ucfirst($languageTitle) . ' Snippet' . $snippetCount . ' ' . $faker->sentence(3));
                 $snippet->setDescription($faker->sentence(30));
-//                $snippet->setStatus(self::ACTIVE_SNIPPET_STATUS);
 
-                //story association
-                //$story->getSnippets()->add($snippet);
                 $snippet->setStory($story);
+
+                //status association
+                $status = current($statuses) ? current($statuses) : reset($statuses);
+                $snippet->setStatus($status);
+                next($statuses);
 
                 $manager->persist($snippet);
                 $manager->flush();

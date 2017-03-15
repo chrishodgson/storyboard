@@ -14,7 +14,7 @@ class LoadProjectData extends AbstractFixture implements OrderedFixtureInterface
      * array
      */
     const PROJECTS = [
-        'freelance', 'sky', 'adi',
+        'Freelance', 'Sky', 'ADI',
     ];
 
     /**
