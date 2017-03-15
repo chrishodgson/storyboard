@@ -6,7 +6,7 @@ into stories.
 
 System requirements
 ===
-- Mysql (or other supported database) # http://www.doctrine-project.org/2010/02/11/database-support-doctrine2.html 
+- MySQL (or other supported database) # http://www.doctrine-project.org/2010/02/11/database-support-doctrine2.html 
 - PHP >=7
 - composer
 
