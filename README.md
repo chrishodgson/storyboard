@@ -14,5 +14,5 @@ Installation instructions
 ===
 
 - git clone https://github.com/chrishodgson/storyboard.git # or download
-- composer install 
+- composer install # See https://getcomposer.org/ for more information and documentation.                     
 - ./scripts/setup.sh
