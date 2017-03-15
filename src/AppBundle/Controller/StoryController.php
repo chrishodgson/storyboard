@@ -2,27 +2,12 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Snippet;
 use AppBundle\Entity\Story;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\HttpFoundation\Request;
 
-/**
- * Story controller.
- *
- * @Route("story")
- */
 class StoryController extends Controller
 {
-    /**
-     * Lists all story entities.
-     *
-     * @Route("/", name="story_index")
-     * @Method({"GET", "POST"})
-     */
     public function indexAction(Request $request)
     {
         $logger = $this->get('logger');
@@ -69,55 +54,6 @@ class StoryController extends Controller
         ]);
     }
 
-    /**
-     * @todo move to the snippet controller when we do yaml routes
-     * Creates a new snippet entity for a story.
-     *
-     * @Route("/{id}/snippet/new", name="snippet_new")
-     * @Method({"GET", "POST"})
-     */
-    public function newSnippetAction(Request $request, Story $story)
-    {
-        $snippet = new Snippet();
-        $snippet->setStory($story);
-        $form = $this->createForm('AppBundle\Form\SnippetType', $snippet);
-
-        //add an extra field
-        $form->add('another', CheckboxType::class, [
-            'label' => 'Add another?',
-            'mapped' => false,
-            'required' => false,
-            'attr' => ['checked' => true]
-        ]);
-
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($snippet);
-            $em->flush($snippet);
-
-            if(true == $form->get('another')->getData()){
-                return $this->redirectToRoute('snippet_new', array('id' => $story->getId()));
-            } else {
-                return $this->redirectToRoute('snippet_show', array('id' => $snippet->getId()));
-            }
-        }
-
-        return $this->render('snippet/new.html.twig', array(
-            'story' => $story,
-            'snippet' => $snippet,
-            'form' => $form->createView(),
-        ));
-    }
-
-
-    /**
-     * Creates a new story entity.
-     *
-     * @Route("/new", name="story_new")
-     * @Method({"GET", "POST"})
-     */
     public function newAction(Request $request)
     {
         $story = new Story();
@@ -139,12 +75,6 @@ class StoryController extends Controller
         ));
     }
 
-    /**
-     * Finds and displays a story entity.
-     *
-     * @Route("/{id}", name="story_show")
-     * @Method("GET")
-     */
     public function showAction(Request $request, Story $story)
     {
         $em = $this->getDoctrine()->getManager();
@@ -172,12 +102,6 @@ class StoryController extends Controller
         ));
     }
 
-    /**
-     * Displays a form to edit an existing story entity.
-     *
-     * @Route("/{id}/edit", name="story_edit")
-     * @Method({"GET", "POST"})
-     */
     public function editAction(Request $request, Story $story)
     {
         $deleteForm = $this->createDeleteForm($story);
@@ -197,12 +121,6 @@ class StoryController extends Controller
         ));
     }
 
-    /**
-     * Deletes a story entity.
-     *
-     * @Route("/{id}", name="story_delete")
-     * @Method("DELETE")
-     */
     public function deleteAction(Request $request, Story $story)
     {
         $form = $this->createDeleteForm($story);
@@ -217,13 +135,6 @@ class StoryController extends Controller
         return $this->redirectToRoute('story_index');
     }
 
-    /**
-     * Creates a form to delete a story entity.
-     *
-     * @param Story $story The story entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
     private function createDeleteForm(Story $story)
     {
         return $this->createFormBuilder()

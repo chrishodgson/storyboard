@@ -5,10 +5,6 @@ Phase 1 Release
     - List, Add, Edit, View Stories - add project, favorite 
     - List, Add, Edit, View Snippets - add favorite, snippet_status
 
-- Refactoring
-    - replace annotations with yaml routes
-
-
 Phase 2 Release
 ===
 - Schema 

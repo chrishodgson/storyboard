@@ -3,25 +3,13 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Snippet;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use AppBundle\Entity\Story;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\HttpFoundation\Request;
 
-/**
- * Snippet controller.
- *
- * @Route("snippet")
- */
 class SnippetController extends Controller
 {
-    /**
-     * Snippet entity search.
-     *
-     * @Route("/", name="snippet_index")
-     * @Method({"GET", "POST"})
-     */
     public function indexAction(Request $request)
     {
         $searchFormData = $request->get('appbundle_snippet_search');
@@ -78,12 +66,41 @@ class SnippetController extends Controller
         ]);
     }
 
-    /**
-     * Finds and displays a snippet entity.
-     *
-     * @Route("/{id}", name="snippet_show")
-     * @Method("GET")
-     */
+    public function newAction(Request $request, Story $story)
+    {
+        $snippet = new Snippet();
+        $snippet->setStory($story);
+        $form = $this->createForm('AppBundle\Form\SnippetType', $snippet);
+
+        //add an extra field
+        $form->add('another', CheckboxType::class, [
+            'label' => 'Add another?',
+            'mapped' => false,
+            'required' => false,
+            'attr' => ['checked' => true]
+        ]);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($snippet);
+            $em->flush($snippet);
+
+            if(true == $form->get('another')->getData()){
+                return $this->redirectToRoute('snippet_new', array('id' => $story->getId()));
+            } else {
+                return $this->redirectToRoute('snippet_show', array('id' => $snippet->getId()));
+            }
+        }
+
+        return $this->render('snippet/new.html.twig', array(
+            'story' => $story,
+            'snippet' => $snippet,
+            'form' => $form->createView(),
+        ));
+    }
+
     public function showAction(Snippet $snippet)
     {
         $deleteForm = $this->createDeleteForm($snippet);
@@ -94,12 +111,6 @@ class SnippetController extends Controller
         ));
     }
 
-    /**
-     * Displays a form to edit an existing snippet entity.
-     *
-     * @Route("/{id}/edit", name="snippet_edit")
-     * @Method({"GET", "POST"})
-     */
     public function editAction(Request $request, Snippet $snippet)
     {
         $deleteForm = $this->createDeleteForm($snippet);
@@ -119,12 +130,6 @@ class SnippetController extends Controller
         ));
     }
 
-    /**
-     * Deletes a snippet entity.
-     *
-     * @Route("/{id}", name="snippet_delete")
-     * @Method("DELETE")
-     */
     public function deleteAction(Request $request, Snippet $snippet)
     {
         $form = $this->createDeleteForm($snippet);
@@ -139,13 +144,6 @@ class SnippetController extends Controller
         return $this->redirectToRoute('snippet_index');
     }
 
-    /**
-     * Creates a form to delete a snippet entity.
-     *
-     * @param Snippet $snippet The snippet entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
     private function createDeleteForm(Snippet $snippet)
     {
         return $this->createFormBuilder()
