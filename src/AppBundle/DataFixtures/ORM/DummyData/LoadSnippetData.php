@@ -5,7 +5,6 @@ namespace AppBundle\DataFixtures\ORM\DummyData;
 
 use AppBundle\Entity\FavouriteSnippet;
 use AppBundle\Entity\FavouriteStory;
-use AppBundle\Entity\Project;
 use AppBundle\Entity\Snippet;
 use AppBundle\Entity\Story;
 use Doctrine\Common\DataFixtures\AbstractFixture;
@@ -40,12 +39,12 @@ class LoadSnippetData extends AbstractFixture implements OrderedFixtureInterface
         /**
          * create projects
          */
-        for($projectCount=1; $projectCount<=self::NUM_PROJECTS; $projectCount++) {
-            $project = new Project;
-            $project->setTitle('Project ' . $projectCount);
-            $manager->persist($project);
-            $manager->flush();
-        }
+//        for($projectCount=1; $projectCount<=self::NUM_PROJECTS; $projectCount++) {
+//            $project = new Project;
+//            $project->setTitle('Project ' . $projectCount);
+//            $manager->persist($project);
+//            $manager->flush();
+//        }
 
         //$em = $this->getDoctrine()->getManager();
         $manager->createQuery('DELETE FROM AppBundle:Story')->execute();

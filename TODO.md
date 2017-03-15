@@ -7,7 +7,6 @@ Phase 1 Release
 
 - Refactoring
     - replace annotations with yaml routes
-    - write unit tests
 
 
 Phase 2 Release
@@ -17,8 +16,7 @@ Phase 2 Release
     - language table: snippet_count 
     - all tables: created_at, updated_at
 
-- Doctrine PrePersist & PreUpdate hooks 
-    http://symfony.com/doc/2.8/doctrine/lifecycle_callbacks.html
+- Doctrine PrePersist & PreUpdate hooks: http://symfony.com/doc/2.8/doctrine/lifecycle_callbacks.html
     - language snippet count    
     - created_at, updated_at    
     - project story count 
@@ -27,3 +25,6 @@ Phase 2 Release
     - List, Add, Edit, View Languages
     - List, Add, Edit, View Projects
     - All Listing - show created_at 
+
+- Testing
+    - unit tests
