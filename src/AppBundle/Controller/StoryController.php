@@ -16,17 +16,25 @@ class StoryController extends Controller
         $searchFormData = $request->get('appbundle_story_search');
         $searchText = $searchFormData['searchText'] ?? '';
         $searchTerms = explode(' ', trim($searchText));
+        $project = $searchFormData['project'] ?? '';
 
         //create the search form
         $searchForm = $this->createForm('AppBundle\Form\StorySearch');
 
+        // get the project entity
+        if($project){
+            $project = $em->getRepository('AppBundle:Project')->find($project);
+        }
+
         //set the search form values
         $searchForm->get('searchText')->setData($searchText);
+        $searchForm->get('project')->setData($project);
 
         $repository = $em->getRepository('AppBundle:Story');
 
         //generate the initial query
-        $query = $repository->createQueryBuilder('s');
+        $query = $repository->createQueryBuilder('s')
+            ->join('s.project', 'p');
 
         // filter by search text
         if(count($searchTerms) > 0){
@@ -38,6 +46,11 @@ class StoryController extends Controller
                 $query->andWhere('s.title LIKE :searchTerm' . $key)
                     ->setParameter('searchTerm' . $key, '%' . $searchTerm . '%');
             }
+        }
+
+        if($project){
+            $query->andWhere('p.id = :project')
+                ->setParameter('project', $project->getId());
         }
 
         $paginator  = $this->get('knp_paginator');

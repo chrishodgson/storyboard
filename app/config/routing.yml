@@ -9,7 +9,7 @@ base_url:
 story_index:
   path:     /story
   defaults: { _controller: AppBundle:Story:index }
-  methods:  [GET]
+  methods:  [GET,POST]
 story_new:
   path:     /story/new
   defaults: { _controller: AppBundle:Story:new }
@@ -37,7 +37,7 @@ story_delete:
 snippet_index:
   path:     /snippet
   defaults: { _controller: AppBundle:Snippet:index }
-  methods:  [GET]
+  methods:  [GET,POST]
 snippet_new:
   path:     /story/{id}/snippet/new
   defaults: { _controller: AppBundle:Snippet:new }

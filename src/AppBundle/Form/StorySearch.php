@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class StorySearch extends AbstractType
 {
@@ -21,6 +22,13 @@ class StorySearch extends AbstractType
                 'label' => false,
                 'required' => false,
             ])
+            ->add('project', EntityType::class, [
+                'class' => 'AppBundle:Project',
+                'label' => false,
+                'required' => false,
+                'empty_data'  => null,
+                'placeholder'=>'Choose a project',
+            ])
             ->add('submit', SubmitType::class, [
                 'attr'=>['class'=>'btn-primary'],
                 'label' => 'Search'
@@ -34,5 +42,4 @@ class StorySearch extends AbstractType
     {
         return 'appbundle_story_search';
     }
-
 }
