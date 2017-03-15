@@ -28,6 +28,13 @@ class SnippetSearch extends AbstractType
                 'empty_data'  => null,
                 'placeholder' => 'Choose the language',
             ])
+            ->add('status', EntityType::class, [
+                'class' => 'AppBundle:SnippetStatus',
+                'label' => false,
+                'required' => false,
+                'empty_data'  => null,
+                'placeholder' => 'Choose the status',
+            ])
             ->add('submit', SubmitType::class, [
                 'attr'=>['class'=>'btn-primary'],
                 'label' => 'Search'

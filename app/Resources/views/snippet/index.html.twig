@@ -24,6 +24,8 @@
             <th>Story</th>
             <th{% if pagination.isSorted('l.id') %} class="sorted"{% endif %}>
                 {{ knp_pagination_sortable(pagination, 'Language', 'l.id') }}</th>
+            <th{% if pagination.isSorted('status.id') %} class="sorted"{% endif %}>
+                {{ knp_pagination_sortable(pagination, 'Status', 'status.id') }}</th>
             <th>Actions</th>
         </tr>
         </thead>
@@ -41,6 +43,7 @@
                     <a href="{{ path('story_show', { 'id': snippet.story.id }) }}">{{ snippet.story.title }}</a>
                 </td>
                 <td>{{ snippet.language.title }}</td>
+                <td>{{ snippet.status.title }}</td>
                 <td>
                     <ul class="list-unstyled">
                         <li>

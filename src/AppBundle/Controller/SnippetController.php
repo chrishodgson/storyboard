@@ -13,6 +13,7 @@ class SnippetController extends Controller
     public function indexAction(Request $request)
     {
         $searchFormData = $request->get('appbundle_snippet_search');
+        $status = $searchFormData['status'] ?? '';
         $language = $searchFormData['language'] ?? '';
         $searchText = $searchFormData['searchText'] ?? '';
         $searchTerms = explode(' ', trim($searchText));
@@ -24,23 +25,36 @@ class SnippetController extends Controller
             $language = $em->getRepository('AppBundle:Language')->find($language);
         }
 
+        // get the status entity
+        if($status){
+            $status = $em->getRepository('AppBundle:SnippetStatus')->find($status);
+        }
+
         //create the search form
         $searchForm = $this->createForm('AppBundle\Form\SnippetSearch');
 
         //set the search form values
         $searchForm->get('searchText')->setData($searchText);
         $searchForm->get('language')->setData($language);
+        $searchForm->get('status')->setData($status);
 
         $repository = $em->getRepository('AppBundle:Snippet');
 
         //generate the initial query
         $query = $repository->createQueryBuilder('s')
-            ->join('s.language', 'l');
+            ->join('s.language', 'l')
+            ->join('s.status', 'status');
 
         // filter by language
         if($language){
-            $query->where('l.id = :language')
-                  ->setParameter('language', $language->getId());
+            $query->andWhere('l.id = :language')
+                ->setParameter('language', $language->getId());
+        }
+
+        // filter by status
+        if($status){
+            $query->andWhere('status.id = :status')
+                ->setParameter('status', $status->getId());
         }
 
         // filter by search text

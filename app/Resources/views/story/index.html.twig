@@ -23,6 +23,8 @@
                 <th>{{ knp_pagination_sortable(pagination, 'Id', 's.id') }}</th>
                 <th{% if pagination.isSorted('s.title') %} class="sorted"{% endif %}>
                     {{ knp_pagination_sortable(pagination, 'Title', 's.title') }}</th>
+                <th{% if pagination.isSorted('p.id') %} class="sorted"{% endif %}>
+                    {{ knp_pagination_sortable(pagination, 'Project', 'p.id') }}</th>
                 {#<th>Snippets</th>#}
                 <th>Actions</th>
             </tr>
@@ -37,6 +39,7 @@
                 <td>
                     {{ story.title }}
                 </td>
+                <td>{{ story.project.title }}</td>
                 {#<td>{{ story.snippets|length }}</td>#}
 
                 <td>
