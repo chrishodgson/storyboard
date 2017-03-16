@@ -1,0 +1,35 @@
+
+# Story actions
+story_index:
+  path:     /story
+  defaults: { _controller: AppBundle:Story:index }
+  methods:  [GET,POST]
+story_new:
+  path:     /story/new
+  defaults: { _controller: AppBundle:Story:new }
+  methods:  [GET, POST]
+story_show:
+  path:     /story/{id}/show
+  defaults: { _controller: AppBundle:Story:show }
+  methods:  [GET]
+  requirements:
+      id:     \d+
+story_edit:
+  path:     /story/{id}/edit
+  defaults: { _controller: AppBundle:Story:edit}
+  methods:  [GET, POST]
+  requirements:
+      id:     \d+
+story_delete:
+  path:     /story/{id}/delete
+  defaults: { _controller: AppBundle:Story:delete }
+  methods:  [DELETE]
+  requirements:
+      id:     \d+
+story_favourite:
+  path:     /story/{id}/favourite/{option}
+  defaults: { _controller: AppBundle:Story:updateFavourite }
+  methods:  [GET]
+  requirements:
+      id:     \d+
+      option: \d+

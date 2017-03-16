@@ -1,0 +1,36 @@
+
+# Snippet actions
+snippet_index:
+  path:     /snippet
+  defaults: { _controller: AppBundle:Snippet:index }
+  methods:  [GET,POST]
+snippet_new:
+  path:     /story/{id}/snippet/new
+  defaults: { _controller: AppBundle:Snippet:new }
+  methods:  [GET, POST]
+snippet_show:
+  path:     /snippet/{id}/show
+  defaults: { _controller: AppBundle:Snippet:show }
+  methods:  [GET]
+  requirements:
+      id:     \d+
+snippet_edit:
+  path:     /snippet/{id}/edit
+  defaults: { _controller: AppBundle:Snippet:edit}
+  methods:  [GET, POST]
+  requirements:
+      id:     \d+
+snippet_delete:
+  path:     /snippet/{id}/delete
+  defaults: { _controller: AppBundle:Snippet:delete }
+  methods:  [DELETE]
+  requirements:
+      id:     \d+
+snippet_favourite:
+  path:     /snippet/{id}/favourite/{option}
+  defaults: { _controller: AppBundle:Snippet:updateFavourite }
+  methods:  [GET]
+  requirements:
+      id:     \d+
+      option: \d+
+

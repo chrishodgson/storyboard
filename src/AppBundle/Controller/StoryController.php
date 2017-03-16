@@ -150,7 +150,7 @@ class StoryController extends Controller
         return $this->redirectToRoute('story_index');
     }
 
-    public function FavouriteAction(Story $story, int $option)
+    public function updateFavouriteAction(Story $story, int $option)
     {
         $em = $this->getDoctrine()->getManager();
         $favourite = $em->getRepository('AppBundle:FavouriteStory')->findOneBy([

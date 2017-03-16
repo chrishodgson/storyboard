@@ -160,7 +160,7 @@ class SnippetController extends Controller
         return $this->redirectToRoute('snippet_index');
     }
 
-    public function FavouriteAction(Snippet $snippet, int $option)
+    public function updateFavouriteAction(Snippet $snippet, int $option)
     {
         $em = $this->getDoctrine()->getManager();
         $favourite = $em->getRepository('AppBundle:FavouriteSnippet')->findOneBy([

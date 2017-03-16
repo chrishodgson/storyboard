@@ -2,7 +2,7 @@
 Phase 1 Release
 ===
 - Screens
-    - Controller actions to Add/Remove Favourites 
+    - updateFavouriteAction redirect to specific page on listing 
 
 Phase 2 Release
 ===
