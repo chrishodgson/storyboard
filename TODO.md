@@ -20,10 +20,13 @@ Phase 2 Release
     - List, Add, Edit, View Languages 
     - List, Add, Edit, View Projects
     - All Listing - show created_at 
-    - Favourite icons
+    - Favourite icons in the listings
 
 - Data fixture
     - Setup dummy projects and assign to stories
 
 - Testing
     - unit tests
+
+- Refactoring
+    - throw $this->createNotFoundException when entity not found in controllers
