@@ -3,6 +3,7 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -18,8 +19,10 @@ class SnippetType extends AbstractType
             ->add('title')
             ->add('description', null, ['attr'=>['rows'=>3]])
             ->add('language', null, ['placeholder' => 'Choose a language'])
+            ->add('status', null, ['placeholder' => 'Choose a status'])
             ->add('code', null, ['attr'=>['rows'=>15]])
             ->add('position', null, ['data' => 0]);
+//            ->add('favourite', CheckboxType::class)
     }
     
     /**

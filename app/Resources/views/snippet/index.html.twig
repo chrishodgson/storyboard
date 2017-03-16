@@ -26,7 +26,9 @@
                 {{ knp_pagination_sortable(pagination, 'Language', 'l.id') }}</th>
             <th{% if pagination.isSorted('status.id') %} class="sorted"{% endif %}>
                 {{ knp_pagination_sortable(pagination, 'Status', 'status.id') }}</th>
-            <th>Actions</th>
+            <th{% if pagination.isSorted('f.id') %} class="sorted"{% endif %}>
+                {{ knp_pagination_sortable(pagination, 'Fav', 'f.id') }}</th>
+            <th>&nbsp;</th>
         </tr>
         </thead>
         <tbody>
@@ -44,6 +46,10 @@
                 </td>
                 <td>{{ snippet.language.title }}</td>
                 <td>{{ snippet.status.title }}</td>
+
+                <td><a href="{{ path('snippet_favourite',
+                    { 'id': snippet.id, 'option': snippet.favourite ?1:0 }) }}">{{ snippet.favourite ?'Yes':'No' }}</a></td>
+
                 <td>
                     <ul class="list-unstyled">
                         <li>

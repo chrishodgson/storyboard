@@ -32,6 +32,13 @@ story_delete:
   methods:  [DELETE]
   requirements:
       id:     \d+      
+story_favourite:
+  path:     /story/{id}/favourite/{option}
+  defaults: { _controller: AppBundle:Story:favourite }
+  methods:  [GET]
+  requirements:
+      id:     \d+
+      option: \d+
 
 # Snippet actions
 snippet_index:
@@ -60,6 +67,13 @@ snippet_delete:
   methods:  [DELETE]
   requirements:
       id:     \d+      
+snippet_favourite:
+  path:     /snippet/{id}/favourite/{option}
+  defaults: { _controller: AppBundle:Snippet:favourite }
+  methods:  [GET]
+  requirements:
+      id:     \d+
+      option: \d+
 
 # logout
 logout:

@@ -2,8 +2,7 @@
 Phase 1 Release
 ===
 - Screens
-    - List, Add, Edit, View Stories - add project, favorite 
-    - List, Add, Edit, View Snippets - add favorite, snippet_status
+    - Controller actions to Add/Remove Favourites 
 
 Phase 2 Release
 ===
@@ -18,9 +17,13 @@ Phase 2 Release
     - project story count 
 
 - Screens
-    - List, Add, Edit, View Languages
+    - List, Add, Edit, View Languages 
     - List, Add, Edit, View Projects
     - All Listing - show created_at 
+    - Favourite icons
+
+- Data fixture
+    - Setup dummy projects and assign to stories
 
 - Testing
     - unit tests

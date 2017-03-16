@@ -25,8 +25,10 @@
                     {{ knp_pagination_sortable(pagination, 'Title', 's.title') }}</th>
                 <th{% if pagination.isSorted('p.id') %} class="sorted"{% endif %}>
                     {{ knp_pagination_sortable(pagination, 'Project', 'p.id') }}</th>
+                <th{% if pagination.isSorted('f.id') %} class="sorted"{% endif %}>
+                    {{ knp_pagination_sortable(pagination, 'Fav', 'f.id') }}</th>
                 {#<th>Snippets</th>#}
-                <th>Actions</th>
+                <th>&nbsp;</th>
             </tr>
         </thead>
         <tbody>
@@ -40,6 +42,10 @@
                     {{ story.title }}
                 </td>
                 <td>{{ story.project.title }}</td>
+
+                <td><a href="{{ path('story_favourite',
+                    { 'id': story.id, 'option': story.favourite ?1:0 }) }}">{{ story.favourite ?'Yes':'No' }}</a></td>
+
                 {#<td>{{ story.snippets|length }}</td>#}
 
                 <td>

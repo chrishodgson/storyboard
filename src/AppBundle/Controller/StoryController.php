@@ -34,7 +34,8 @@ class StoryController extends Controller
 
         //generate the initial query
         $query = $repository->createQueryBuilder('s')
-            ->join('s.project', 'p');
+            ->join('s.project', 'p')
+            ->leftJoin('s.favourite', 'f');
 
         // filter by search text
         if(count($searchTerms) > 0){
@@ -145,6 +146,11 @@ class StoryController extends Controller
             $em->flush($story);
         }
 
+        return $this->redirectToRoute('story_index');
+    }
+
+    public function FavouriteAction(Request $request, Story $story, int $option)
+    {
         return $this->redirectToRoute('story_index');
     }
 

@@ -43,7 +43,8 @@ class SnippetController extends Controller
         //generate the initial query
         $query = $repository->createQueryBuilder('s')
             ->join('s.language', 'l')
-            ->join('s.status', 'status');
+            ->join('s.status', 'status')
+            ->leftJoin('s.favourite', 'f');
 
         // filter by language
         if($language){
@@ -154,6 +155,31 @@ class SnippetController extends Controller
             $em->remove($snippet);
             $em->flush($snippet);
         }
+
+        return $this->redirectToRoute('snippet_index');
+    }
+
+    public function FavouriteAction(Request $request, Snippet $snippet, int $option)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $favourite = $em->getRepository('AppBundle:FavouriteSnippet')->findOneBy([
+            'snippet' => $snippet
+        ]);
+
+        if($option){
+            if(!$favourite){
+                //todo create it
+                //$entity =
+                //$snippet->setFavourite($favourite);
+            }
+        } else {
+            if($favourite){
+                //todo delete it
+                //$snippet->setFavourite($option);
+            }
+        }
+        $em->persist($snippet);
+        $em->flush();
 
         return $this->redirectToRoute('snippet_index');
     }
