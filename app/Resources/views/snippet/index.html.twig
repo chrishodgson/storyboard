@@ -47,8 +47,11 @@
                 <td>{{ snippet.language.title }}</td>
                 <td>{{ snippet.status.title }}</td>
 
-                <td><a href="{{ path('snippet_favourite',
-                    { 'id': snippet.id, 'option': snippet.favourite ? 0 : 1 }) }}">{{ snippet.favourite ? 'Yes' : 'No' }}</a>
+                <td><a href="{{ path('snippet_favourite', {
+                        'id': snippet.id,
+                        'option': snippet.favourite ? 0 : 1,
+                        'redirect_to': app.request.uri
+                    }) }}">{{ snippet.favourite ? 'Yes' : 'No' }}</a>
                 </td>
 
                 <td>

@@ -160,7 +160,7 @@ class SnippetController extends Controller
         return $this->redirectToRoute('snippet_index');
     }
 
-    public function updateFavouriteAction(Snippet $snippet, int $option)
+    public function updateFavouriteAction(Request $request, Snippet $snippet, int $option)
     {
         $em = $this->getDoctrine()->getManager();
         $favourite = $em->getRepository('AppBundle:FavouriteSnippet')->findOneBy([
@@ -181,7 +181,13 @@ class SnippetController extends Controller
             }
         }
 
-        return $this->redirectToRoute('snippet_index');
+        $redirectUrl = $request->query->get('redirect_to');
+
+        if($redirectUrl){
+            return $this->redirect($redirectUrl);
+        } else {
+            return $this->redirectToRoute('snippet_index');
+        }
     }
 
     private function createDeleteForm(Snippet $snippet)

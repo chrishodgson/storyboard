@@ -1,8 +1,6 @@
 
 Phase 1 Release
 ===
-- Screens
-    - updateFavouriteAction redirect to specific page on listing 
 
 Phase 2 Release
 ===

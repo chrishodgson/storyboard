@@ -150,7 +150,7 @@ class StoryController extends Controller
         return $this->redirectToRoute('story_index');
     }
 
-    public function updateFavouriteAction(Story $story, int $option)
+    public function updateFavouriteAction(Request $request, Story $story, int $option)
     {
         $em = $this->getDoctrine()->getManager();
         $favourite = $em->getRepository('AppBundle:FavouriteStory')->findOneBy([
@@ -171,7 +171,13 @@ class StoryController extends Controller
             }
         }
 
-        return $this->redirectToRoute('story_index');
+        $redirectUrl = $request->query->get('redirect_to');
+
+        if($redirectUrl){
+            return $this->redirect($redirectUrl);
+        } else {
+            return $this->redirectToRoute('story_index');
+        }
     }
 
     private function createDeleteForm(Story $story)

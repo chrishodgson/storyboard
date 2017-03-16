@@ -43,8 +43,11 @@
                 </td>
                 <td>{{ story.project.title }}</td>
 
-                <td><a href="{{ path('story_favourite',
-                    { 'id': story.id, 'option': story.favourite ? 0 : 1 }) }}">{{ story.favourite ? 'Yes' : 'No' }}</a>
+                <td><a href="{{ path('story_favourite', {
+                       'id': story.id,
+                       'option': story.favourite ? 0 : 1,
+                       'redirect_to': app.request.uri
+                    }) }}">{{ story.favourite ? 'Yes' : 'No' }}</a>
                 </td>
 
                 {#<td>{{ story.snippets|length }}</td>#}
