@@ -16,7 +16,6 @@ class StoryType extends AbstractType
     {
         $builder->add('title')
                 ->add('project', null, ['placeholder' => 'Choose a project']);
-//                ->add('favourite', CheckboxType::class)
     }
     
     /**

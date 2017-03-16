@@ -4,6 +4,7 @@ namespace AppBundle\Form;
 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -28,6 +29,11 @@ class StorySearch extends AbstractType
                 'required' => false,
                 'empty_data'  => null,
                 'placeholder'=>'Choose a project',
+            ])
+            ->add('showFavourites', CheckboxType::class, [
+                'label_attr' => ['class'=>'padd'],
+                'label' => 'Show favourites',
+                'required' => false
             ])
             ->add('submit', SubmitType::class, [
                 'attr'=>['class'=>'btn-primary'],

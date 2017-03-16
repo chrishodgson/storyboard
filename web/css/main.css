@@ -10,6 +10,10 @@ hr.spacer2{
     border:0;
 }
 
+label.padd {
+    padding-right: 10px;
+}
+
 .form-inline {
     margin: 10px 0
 }

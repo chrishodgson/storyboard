@@ -22,7 +22,6 @@ class SnippetType extends AbstractType
             ->add('status', null, ['placeholder' => 'Choose a status'])
             ->add('code', null, ['attr'=>['rows'=>15]])
             ->add('position', null, ['data' => 0]);
-//            ->add('favourite', CheckboxType::class)
     }
     
     /**

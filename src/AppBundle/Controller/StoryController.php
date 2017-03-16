@@ -18,6 +18,7 @@ class StoryController extends Controller
         $searchText = $searchFormData['searchText'] ?? '';
         $searchTerms = explode(' ', trim($searchText));
         $project = $searchFormData['project'] ?? '';
+        $showFavourites = $searchFormData['showFavourites'] ?? false;
 
         //create the search form
         $searchForm = $this->createForm('AppBundle\Form\StorySearch');
@@ -30,6 +31,7 @@ class StoryController extends Controller
         //set the search form values
         $searchForm->get('searchText')->setData($searchText);
         $searchForm->get('project')->setData($project);
+        $searchForm->get('showFavourites')->setData((bool)$showFavourites);
 
         $repository = $em->getRepository('AppBundle:Story');
 
@@ -53,6 +55,11 @@ class StoryController extends Controller
         if($project){
             $query->andWhere('p.id = :project')
                 ->setParameter('project', $project->getId());
+        }
+
+        //filter on show favouritez
+        if($showFavourites){
+            $query->andWhere($query->expr()->isNotNull('f.id'));
         }
 
         $paginator  = $this->get('knp_paginator');

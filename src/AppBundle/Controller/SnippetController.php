@@ -18,6 +18,7 @@ class SnippetController extends Controller
         $language = $searchFormData['language'] ?? '';
         $searchText = $searchFormData['searchText'] ?? '';
         $searchTerms = explode(' ', trim($searchText));
+        $showFavourites = $searchFormData['showFavourites'] ?? false;
 
         $em = $this->getDoctrine()->getManager();
 
@@ -38,6 +39,7 @@ class SnippetController extends Controller
         $searchForm->get('searchText')->setData($searchText);
         $searchForm->get('language')->setData($language);
         $searchForm->get('status')->setData($status);
+        $searchForm->get('showFavourites')->setData((bool)$showFavourites);
 
         $repository = $em->getRepository('AppBundle:Snippet');
 
@@ -57,6 +59,11 @@ class SnippetController extends Controller
         if($status){
             $query->andWhere('status.id = :status')
                 ->setParameter('status', $status->getId());
+        }
+
+        //filter on show favouritez
+        if($showFavourites){
+            $query->andWhere($query->expr()->isNotNull('f.id'));
         }
 
         // filter by search text
