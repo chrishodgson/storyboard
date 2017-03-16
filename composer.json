@@ -1,7 +1,14 @@
 {
     "name": "chrishodgson/storyboard",
-    "license": "proprietary",
     "type": "project",
+    "description": "Web application which allows you to store code snippets grouped into stories and projects.",
+    "keywords": ["symfony3", "doctrine2", "php7"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Chris Hodgson"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "": "src/"
