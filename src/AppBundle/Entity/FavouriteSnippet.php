@@ -23,7 +23,7 @@ class FavouriteSnippet
     private $id;
 
     /**
-     * One FavouriteSnippet has One Snippet. (owning side)
+     * One FavouriteSnippet has One Snippet (owning side).
      * @ORM\OneToOne(targetEntity="Snippet", inversedBy="favourite")
      * @ORM\JoinColumn(name="snippet_id", referencedColumnName="id")
      */

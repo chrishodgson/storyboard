@@ -23,7 +23,7 @@ class FavouriteStory
     private $id;
 
     /**
-     * One FavouriteStory has One Story. (owning side)
+     * One FavouriteStory has One Story (owning side).
      * @ORM\OneToOne(targetEntity="Story", inversedBy="favourite")
      * @ORM\JoinColumn(name="story_id", referencedColumnName="id")
      */

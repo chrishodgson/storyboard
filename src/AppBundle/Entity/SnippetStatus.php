@@ -33,7 +33,7 @@ class SnippetStatus
 
     /**
      * One SnippetStatus has Many Snippets (non owning side)
-     * @ORM\OneToMany(targetEntity="Snippet", mappedBy="SnippetStatus", cascade={"remove"})
+     * @ORM\OneToMany(targetEntity="Snippet", mappedBy="status", cascade={"remove"})
      */
     private $snippets;
 

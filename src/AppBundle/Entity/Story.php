@@ -47,7 +47,7 @@ class Story
     private $snippets;
 
     /**
-     * One Story has One Favourite.
+     * One Story has One Favourite (non owning side).
      * @ORM\OneToOne(targetEntity="FavouriteStory", mappedBy="story")
      */
     private $favourite;

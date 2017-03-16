@@ -77,7 +77,7 @@ class Snippet
     private $status;
 
     /**
-     * One Snippet has One Favourite.
+     * One Snippet has One Favourite (non owning side).
      * @ORM\OneToOne(targetEntity="FavouriteSnippet", mappedBy="snippet")
      */
     private $favourite;

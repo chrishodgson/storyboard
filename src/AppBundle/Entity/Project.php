@@ -33,7 +33,7 @@ class Project
 
     /**
      * One Project has Many Stories (non owning side)
-     * @ORM\OneToMany(targetEntity="Story", mappedBy="Project", cascade={"remove"})
+     * @ORM\OneToMany(targetEntity="Story", mappedBy="project", cascade={"remove"})
      */
     private $stories;
 
