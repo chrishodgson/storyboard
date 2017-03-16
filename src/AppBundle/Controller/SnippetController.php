@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\FavouriteSnippet;
 use AppBundle\Entity\Snippet;
 use AppBundle\Entity\Story;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -159,7 +160,7 @@ class SnippetController extends Controller
         return $this->redirectToRoute('snippet_index');
     }
 
-    public function FavouriteAction(Request $request, Snippet $snippet, int $option)
+    public function FavouriteAction(Snippet $snippet, int $option)
     {
         $em = $this->getDoctrine()->getManager();
         $favourite = $em->getRepository('AppBundle:FavouriteSnippet')->findOneBy([
@@ -168,18 +169,17 @@ class SnippetController extends Controller
 
         if($option){
             if(!$favourite){
-                //todo create it
-                //$entity =
-                //$snippet->setFavourite($favourite);
+                $favourite = new FavouriteSnippet;
+                $favourite->setSnippet($snippet);
+                $em->persist($favourite);
+                $em->flush();
             }
         } else {
             if($favourite){
-                //todo delete it
-                //$snippet->setFavourite($option);
+                $em->remove($favourite);
+                $em->flush();
             }
         }
-        $em->persist($snippet);
-        $em->flush();
 
         return $this->redirectToRoute('snippet_index');
     }

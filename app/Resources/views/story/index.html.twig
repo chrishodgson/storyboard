@@ -44,7 +44,8 @@
                 <td>{{ story.project.title }}</td>
 
                 <td><a href="{{ path('story_favourite',
-                    { 'id': story.id, 'option': story.favourite ?1:0 }) }}">{{ story.favourite ?'Yes':'No' }}</a></td>
+                    { 'id': story.id, 'option': story.favourite ? 0 : 1 }) }}">{{ story.favourite ? 'Yes' : 'No' }}</a>
+                </td>
 
                 {#<td>{{ story.snippets|length }}</td>#}
 

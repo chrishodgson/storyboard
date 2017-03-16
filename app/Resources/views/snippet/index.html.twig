@@ -48,7 +48,8 @@
                 <td>{{ snippet.status.title }}</td>
 
                 <td><a href="{{ path('snippet_favourite',
-                    { 'id': snippet.id, 'option': snippet.favourite ?1:0 }) }}">{{ snippet.favourite ?'Yes':'No' }}</a></td>
+                    { 'id': snippet.id, 'option': snippet.favourite ? 0 : 1 }) }}">{{ snippet.favourite ? 'Yes' : 'No' }}</a>
+                </td>
 
                 <td>
                     <ul class="list-unstyled">

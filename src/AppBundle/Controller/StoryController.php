@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\FavouriteStory;
 use AppBundle\Entity\Story;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -149,8 +150,27 @@ class StoryController extends Controller
         return $this->redirectToRoute('story_index');
     }
 
-    public function FavouriteAction(Request $request, Story $story, int $option)
+    public function FavouriteAction(Story $story, int $option)
     {
+        $em = $this->getDoctrine()->getManager();
+        $favourite = $em->getRepository('AppBundle:FavouriteStory')->findOneBy([
+            'story' => $story
+        ]);
+
+        if($option){
+            if(!$favourite){
+                $favourite = new FavouriteStory;
+                $favourite->setStory($story);
+                $em->persist($favourite);
+                $em->flush();
+            }
+        } else {
+            if($favourite){
+                $em->remove($favourite);
+                $em->flush();
+            }
+        }
+
         return $this->redirectToRoute('story_index');
     }
 
