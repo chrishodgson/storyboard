@@ -19,7 +19,8 @@ Phase 2 Release
     - List, Add, Edit, View Projects
     - All Listing - show created_at 
     - Favourite icons in the listings
-
+    - Use masonary library https://github.com/desandro/masonry
+    
 - Data fixture
     - Setup dummy projects and assign to stories
 
