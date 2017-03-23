@@ -44,50 +44,24 @@ label.padd {
     content: '';
 }
 
-/* http://w3bits.com/css-masonry/ */
-
-.masonry { /* Masonry container */
-    column-count: 1;
-    column-gap: 1em;
-}
-
-.masonry-item { /* Masonry bricks or child elements */
-    display: inline-block;
-    padding: 1em;
-    margin: 0 0 1.5em;
-    width: 100%;
+.grid-item {
+    padding: 1.5em 2em 0;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    /*box-shadow: 2px 2px 4px 0 #ccc;*/
     border: 1px solid #eee;
 }
 
-@media only screen and (min-width: 400px) {  }
-@media only screen and (min-width: 700px) {  }
+.grid-sizer, .grid-item { width: 100%; }
 
-@media only screen and (min-width: 900px) {
-    .masonry {
-        -moz-column-count: 2;
-        -webkit-column-count: 2;
-        column-count: 2;
-    }
+@media screen and (min-width: 768px) {
+    .grid-sizer, .grid-item  { width: 50%; }
 }
 
-@media only screen and (min-width: 1100px) {
-    .masonry {
-        -moz-column-count: 3;
-        -webkit-column-count: 3;
-        column-count: 3;
-    }
+@media screen and (min-width: 1200px) {
+    .grid-sizer, .grid-item  { width: 33.333%; }
 }
 
-@media only screen and (min-width: 1280px) {  }
-
-@media only screen and (min-width: 1900px) {
-    .masonry {
-        -moz-column-count: 4;
-        -webkit-column-count: 4;
-        column-count: 4;
-    }
+@media screen and (min-width: 1600px) {
+    .grid-sizer, .grid-item  { width: 25%; }
 }

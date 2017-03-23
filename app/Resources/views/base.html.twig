@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
-            {% stylesheets '@bootstrap_css' '@prism_css' 'css/*.css' filter='cssrewrite' %}
+            {% stylesheets '@bootstrap_css' '@prism_css' 'css/main.css' filter='cssrewrite' %}
             <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
             {% endstylesheets %}
         {% endblock %}
@@ -37,7 +37,7 @@
             {% block body %}{% endblock %}
         </div>
         {% block javascripts %}
-            {% javascripts '@jquery' '@bootstrap_js' '@prism_js' 'js/*.js' %}
+            {% javascripts '@jquery' '@bootstrap_js' '@prism_js' '@masonry_js' 'js/main.js' %}
             <script src="{{ asset_url }}"></script>
             {% endjavascripts %}
         {% endblock %}

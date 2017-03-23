@@ -2,6 +2,9 @@
 
 echo 'Starting script...'
 
+# install assets
+php bin/console assets:install
+
 # drop the database
 php bin/console doctrine:database:drop --force
 

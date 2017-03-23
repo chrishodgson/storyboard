@@ -26,8 +26,9 @@
 
     {% if(pagination.getTotalItemCount) %}
         <div class="masonry">
+            <div class="grid-sizer"></div>
         {% for snippet in pagination %}
-            <div class="masonry-item">
+            <div class="grid-item">
                 <div>
                     <strong title="snippet position: {{ snippet.position }}">{{ snippet.title }}</strong>
                     <small>
