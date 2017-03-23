@@ -2,6 +2,9 @@
 
 echo 'Starting script...'
 
+# composer update - TODO add this in
+# composer update -o
+
 # install assets
 php bin/console assets:install
 

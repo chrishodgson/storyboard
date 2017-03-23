@@ -1,4 +1,9 @@
 
+Hosting issues
+===
+composer update returns Killed
+cannot run nginx - check logs
+
 
 Phase 1 Release - MVP
 ===
@@ -16,8 +21,7 @@ Phase 1 Release - MVP
     - throw $this->createNotFoundException when entity not found in controllers
     
     
-    
-Phase 2 Release
+Backlog
 ===
 - Screens
     - Favourite icons in the listings ?
