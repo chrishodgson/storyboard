@@ -1,11 +1,5 @@
 
-Hosting issues
-===
-composer update returns Killed
-cannot run nginx - check logs
-
-
-Phase 1 Release - MVP
+MVP Release 
 ===
 
 - Screens
@@ -18,7 +12,7 @@ Phase 1 Release - MVP
     - unit tests
 
 - Refactoring
-    - throw $this->createNotFoundException when entity not found in controllers
+    - throw createNotFoundException when entity not found in controllers
     
     
 Backlog

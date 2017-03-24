@@ -9,16 +9,16 @@
     "packages": [
         {
             "name": "components/jquery",
-            "version": "3.1.1",
+            "version": "3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/components/jquery.git",
-                "reference": "09a1658378bc1f818856086396ebeab7d0ec2276"
+                "reference": "e5534d4ab8e80c159553d507e358ed20a806d3bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/components/jquery/zipball/09a1658378bc1f818856086396ebeab7d0ec2276",
-                "reference": "09a1658378bc1f818856086396ebeab7d0ec2276",
+                "url": "https://api.github.com/repos/components/jquery/zipball/e5534d4ab8e80c159553d507e358ed20a806d3bf",
+                "reference": "e5534d4ab8e80c159553d507e358ed20a806d3bf",
                 "shasum": ""
             },
             "type": "component",
@@ -29,7 +29,10 @@
                     ],
                     "files": [
                         "jquery.min.js",
-                        "jquery.min.map"
+                        "jquery.min.map",
+                        "jquery.slim.js",
+                        "jquery.slim.min.js",
+                        "jquery.slim.min.map"
                     ]
                 }
             },
@@ -39,13 +42,12 @@
             ],
             "authors": [
                 {
-                    "name": "John Resig",
-                    "email": "jeresig@gmail.com"
+                    "name": "JS Foundation and other contributors"
                 }
             ],
             "description": "jQuery JavaScript Library",
             "homepage": "http://jquery.com",
-            "time": "2016-09-23 06:06:29"
+            "time": "2017-03-21 07:01:49"
         },
         {
             "name": "doctrine/annotations",
@@ -1173,16 +1175,16 @@
         },
         {
             "name": "knplabs/knp-paginator-bundle",
-            "version": "2.5.3",
+            "version": "2.5.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpPaginatorBundle.git",
-                "reference": "c988761005504007c6c87d6a557641281194a0e5"
+                "reference": "1618a19a871ba1245dc68e462b35e7df07dcfcc3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpPaginatorBundle/zipball/c988761005504007c6c87d6a557641281194a0e5",
-                "reference": "c988761005504007c6c87d6a557641281194a0e5",
+                "url": "https://api.github.com/repos/KnpLabs/KnpPaginatorBundle/zipball/1618a19a871ba1245dc68e462b35e7df07dcfcc3",
+                "reference": "1618a19a871ba1245dc68e462b35e7df07dcfcc3",
                 "shasum": ""
             },
             "require": {
@@ -1192,6 +1194,7 @@
                 "twig/twig": "~1.12|~2"
             },
             "require-dev": {
+                "phpunit/phpunit": "~4.8",
                 "symfony/expression-language": "~2.4|~3.0"
             },
             "type": "symfony-bundle",
@@ -1230,7 +1233,7 @@
                 "pagination",
                 "paginator"
             ],
-            "time": "2016-04-20 11:40:30"
+            "time": "2017-03-21 09:45:46"
         },
         {
             "name": "kriswallsmith/assetic",
@@ -1697,16 +1700,16 @@
         },
         {
             "name": "sensio/framework-extra-bundle",
-            "version": "v3.0.23",
+            "version": "v3.0.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioFrameworkExtraBundle.git",
-                "reference": "d3601fd5709168ace7a1ca6eefa2619a1632b7f7"
+                "reference": "472b339cf0c82f3a033b29f85d9d9cada3cd1a9c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/d3601fd5709168ace7a1ca6eefa2619a1632b7f7",
-                "reference": "d3601fd5709168ace7a1ca6eefa2619a1632b7f7",
+                "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/472b339cf0c82f3a033b29f85d9d9cada3cd1a9c",
+                "reference": "472b339cf0c82f3a033b29f85d9d9cada3cd1a9c",
                 "shasum": ""
             },
             "require": {
@@ -1763,7 +1766,7 @@
                 "annotations",
                 "controllers"
             ],
-            "time": "2017-03-02 20:17:28"
+            "time": "2017-03-21 23:34:44"
         },
         {
             "name": "sensiolabs/security-checker",
@@ -2332,16 +2335,16 @@
         },
         {
             "name": "symfony/swiftmailer-bundle",
-            "version": "v2.5.3",
+            "version": "v2.5.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/swiftmailer-bundle.git",
-                "reference": "b59a70d03b948e29d070b6c4416b4a03af4748ec"
+                "reference": "8ab32ce31a7156621fb92e0466586186beb89759"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/swiftmailer-bundle/zipball/b59a70d03b948e29d070b6c4416b4a03af4748ec",
-                "reference": "b59a70d03b948e29d070b6c4416b4a03af4748ec",
+                "url": "https://api.github.com/repos/symfony/swiftmailer-bundle/zipball/8ab32ce31a7156621fb92e0466586186beb89759",
+                "reference": "8ab32ce31a7156621fb92e0466586186beb89759",
                 "shasum": ""
             },
             "require": {
@@ -2387,7 +2390,7 @@
             ],
             "description": "Symfony SwiftmailerBundle",
             "homepage": "http://symfony.com",
-            "time": "2017-03-02 16:47:57"
+            "time": "2017-03-21 21:47:36"
         },
         {
             "name": "symfony/symfony",
@@ -2584,16 +2587,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v2.2.0",
+            "version": "v2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "29bb02dde09ff56291d30f7687eb8696918023af"
+                "reference": "9718186a5df85a4f7917e78d3ffcabc204c75d25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/29bb02dde09ff56291d30f7687eb8696918023af",
-                "reference": "29bb02dde09ff56291d30f7687eb8696918023af",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/9718186a5df85a4f7917e78d3ffcabc204c75d25",
+                "reference": "9718186a5df85a4f7917e78d3ffcabc204c75d25",
                 "shasum": ""
             },
             "require": {
@@ -2603,12 +2606,12 @@
             "require-dev": {
                 "psr/container": "^1.0",
                 "symfony/debug": "~2.7",
-                "symfony/phpunit-bridge": "~3.2"
+                "symfony/phpunit-bridge": "~3.3@dev"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.2-dev"
+                    "dev-master": "2.3-dev"
                 }
             },
             "autoload": {
@@ -2643,7 +2646,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2017-02-27 00:16:20"
+            "time": "2017-03-22 15:41:51"
         },
         {
             "name": "zendframework/zend-code",
