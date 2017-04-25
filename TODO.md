@@ -1,20 +1,4 @@
 
-React Changes
-===
-
-Schema
-    - snip table: id, language_id, title, code
-
-- Screens
-    - List snips
-
-- Data fixture
-    - Setup dummy snips
-
-- APIs
-    - API to add snip
-
-
 MVP Release 
 ===
 
