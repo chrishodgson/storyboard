@@ -1,6 +1,6 @@
 {
-    "name": "chrishodgson/storyboard",
-    "description": "Storyboard is a PHP 7.1 / Symfony 3 web application which allows you to manage code snippets by story & project.",
+    "name": "chrishodgson/symfony-storyboard",
+    "description": "PHP 7.1 / Symfony 3 web application which allows you to organise code snippets by story & project.",
     "keywords": ["symfony3", "doctrine2", "php71"],
     "license": "MIT",
     "type": "project",
