@@ -1,9 +1,9 @@
 {
     "name": "chrishodgson/storyboard",
-    "type": "project",
-    "description": "Web application which allows you to store code snippets grouped into stories and projects.",
-    "keywords": ["symfony3", "doctrine2", "php7"],
+    "description": "Storyboard is a PHP 7.1 / Symfony 3 web application which allows you to manage code snippets by story & project.",
+    "keywords": ["symfony3", "doctrine2", "php71"],
     "license": "MIT",
+    "type": "project",
     "authors": [
         {
             "name": "Chris Hodgson"
@@ -24,7 +24,7 @@
         }
     },
     "require": {
-        "php": "^7.0",
+        "php": "^7.1",
         "symfony/symfony": "3.1.*",
         "doctrine/orm": "^2.5",
         "doctrine/doctrine-bundle": "^1.6",

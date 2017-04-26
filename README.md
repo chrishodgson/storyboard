@@ -1,18 +1,17 @@
 Description
 ===
-This is a web application build using the Symfony 3 PHP framework which allows you to store code snippets grouped 
-into stories.
+Storyboard is a PHP 7.1 / Symfony 3 web application which allows you to manage code snippets by story & project. 
 
 
 System requirements
 ===
+- PHP >=7.1
 - MySQL (or other supported database) # http://www.doctrine-project.org/2010/02/11/database-support-doctrine2.html 
-- PHP >=7
-- composer
+- composer # See https://getcomposer.org/ for more information and documentation.
 
 Installation instructions
 ===
 
-- git clone https://github.com/chrishodgson/storyboard.git # or download
-- composer install # See https://getcomposer.org/ for more information and documentation.                     
-- ./scripts/setup.sh
+- clone the repository: `git clone https://github.com/chrishodgson/storyboard.git` 
+- cd into the repository and run composer: `composer install`                      
+- run the setup script: `./scripts/setup.sh`
