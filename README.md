@@ -14,3 +14,5 @@ Installation instructions
 - clone the repository: `git clone https://github.com/chrishodgson/storyboard.git` 
 - cd into the repository folder and run composer: `composer install`                      
 - run the setup script: `./scripts/setup.sh`
+
+The end.
