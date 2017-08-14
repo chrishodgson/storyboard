@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Projects list</h1>
+
+    <ul class="list-inline">
+        <li>
+            <a href="{{ path('project_new') }}">New project</a>
+        </li>
+    </ul>
+
+    <p>Total Projects: {{ pagination.getTotalItemCount }}</p>
+
+    <table class="table table-striped table-condensed">
+        <thead>
+            <tr>
+                <th>{{ knp_pagination_sortable(pagination, 'Id', 's.id') }}</th>
+                <th{% if pagination.isSorted('s.title') %} class="sorted"{% endif %}>
+                    {{ knp_pagination_sortable(pagination, 'Title', 's.title') }}</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        {% for project in pagination %}
+            <tr>
+                <td>
+                    <a href="{{ path('project_show', { 'id': project.id }) }}">{{ project.id }}</a>
+                </td>
+                <td>
+                    {{ project.title }}
+                </td>
+
+                <td>
+                    <ul class="list-unstyled list-inline">
+                        <li>
+                            <a href="{{ path('project_show', { 'id': project.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('project_edit', { 'id': project.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+{% endblock %}

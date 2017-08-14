@@ -1,0 +1,28 @@
+
+# Project actions
+project_index:
+  path:     /project
+  defaults: { _controller: AppBundle:Project:index }
+  methods:  [GET,POST]
+project_new:
+  path:     /project/new
+  defaults: { _controller: AppBundle:Project:new }
+  methods:  [GET, POST]
+project_show:
+  path:     /project/{id}/show
+  defaults: { _controller: AppBundle:Project:show }
+  methods:  [GET]
+  requirements:
+      id:     \d+
+project_edit:
+  path:     /project/{id}/edit
+  defaults: { _controller: AppBundle:Project:edit}
+  methods:  [GET, POST]
+  requirements:
+      id:     \d+
+project_delete:
+  path:     /project/{id}/delete
+  defaults: { _controller: AppBundle:Project:delete }
+  methods:  [DELETE]
+  requirements:
+      id:     \d+

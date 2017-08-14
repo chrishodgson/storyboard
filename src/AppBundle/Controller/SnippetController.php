@@ -23,12 +23,12 @@ class SnippetController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         // get the language entity
-        if($language){
+        if ($language) {
             $language = $em->getRepository('AppBundle:Language')->find($language);
         }
 
         // get the status entity
-        if($status){
+        if ($status) {
             $status = $em->getRepository('AppBundle:SnippetStatus')->find($status);
         }
 
@@ -50,24 +50,24 @@ class SnippetController extends Controller
             ->leftJoin('s.favourite', 'f');
 
         // filter by language
-        if($language){
+        if ($language) {
             $query->andWhere('l.id = :language')
                 ->setParameter('language', $language->getId());
         }
 
         // filter by status
-        if($status){
+        if ($status) {
             $query->andWhere('status.id = :status')
                 ->setParameter('status', $status->getId());
         }
 
         //filter on show favouritez
-        if($showFavourites){
+        if ($showFavourites) {
             $query->andWhere($query->expr()->isNotNull('f.id'));
         }
 
         // filter by search text
-        if(count($searchTerms) > 0){
+        if (count($searchTerms) > 0) {
             foreach ($searchTerms as $key => $searchTerm) {
                 $query->andWhere('s.title LIKE :searchTerm' . $key)
                     ->setParameter('searchTerm' . $key, '%' . $searchTerm . '%');
@@ -75,7 +75,7 @@ class SnippetController extends Controller
         }
 
         // paginate the query and get the results
-        $paginator  = $this->get('knp_paginator');
+        $paginator = $this->get('knp_paginator');
 
         $pagination = $paginator->paginate(
             $query, /* query NOT result */
@@ -110,7 +110,7 @@ class SnippetController extends Controller
             $em->persist($snippet);
             $em->flush($snippet);
 
-            if(true == $form->get('another')->getData()){
+            if (true == $form->get('another')->getData()) {
                 return $this->redirectToRoute('snippet_new', array('id' => $story->getId()));
             } else {
                 return $this->redirectToRoute('snippet_show', array('id' => $snippet->getId()));
@@ -174,15 +174,15 @@ class SnippetController extends Controller
             'snippet' => $snippet
         ]);
 
-        if($option){
-            if(!$favourite){
+        if ($option) {
+            if (!$favourite) {
                 $favourite = new FavouriteSnippet;
                 $favourite->setSnippet($snippet);
                 $em->persist($favourite);
                 $em->flush();
             }
         } else {
-            if($favourite){
+            if ($favourite) {
                 $em->remove($favourite);
                 $em->flush();
             }
@@ -190,7 +190,7 @@ class SnippetController extends Controller
 
         $redirectUrl = $request->query->get('redirect_to');
 
-        if($redirectUrl){
+        if ($redirectUrl) {
             return $this->redirect($redirectUrl);
         } else {
             return $this->redirectToRoute('snippet_index');
@@ -202,7 +202,6 @@ class SnippetController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('snippet_delete', array('id' => $snippet->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

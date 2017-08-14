@@ -22,7 +22,7 @@ label.padd {
 }
 
 .list-inline {
-    padding-left: 20px;
+    padding: 0 5px;
     display: inline-block;
 }
 .list-inline form {

@@ -5,6 +5,7 @@ namespace AppBundle\DataFixtures\ORM\DummyData;
 
 use AppBundle\Entity\FavouriteSnippet;
 use AppBundle\Entity\FavouriteStory;
+use AppBundle\Entity\Project;
 use AppBundle\Entity\Snippet;
 use AppBundle\Entity\Story;
 use Doctrine\Common\DataFixtures\AbstractFixture;
@@ -28,6 +29,12 @@ class LoadSnippetData extends AbstractFixture implements OrderedFixtureInterface
         'css'=>'body { display:none }'
     ];
 
+    const PROJECTS = [
+        'Carphone',
+        'Sky',
+        'ADI',
+    ];
+
     /**
      * @param ObjectManager $manager
      */
@@ -40,6 +47,7 @@ class LoadSnippetData extends AbstractFixture implements OrderedFixtureInterface
 
         $list = "'" . implode("','", array_keys(self::SNIPPET_CODE)) . "'";
 
+        $this->createProjects($manager);
         $projects = $manager->getRepository('AppBundle:Project')->findAll();
 
         $dql = 'SELECT l FROM AppBundle:Language l where l.title in ('. $list .')';
@@ -122,6 +130,19 @@ class LoadSnippetData extends AbstractFixture implements OrderedFixtureInterface
                 }
             }
         }
+    }
+
+    private function createProjects(ObjectManager $manager)
+    {
+        $manager->createQuery('DELETE FROM AppBundle:Project')->execute();
+
+        foreach(self::PROJECTS as $title){
+            $entity = new Project;
+            $entity->setTitle($title);
+            $manager->persist($entity);
+        }
+
+        $manager->flush();
     }
 
     /**

@@ -14,4 +14,6 @@ snippets:
 stories:
     resource: "routing/story_routing.yml"
 
+projects:
+    resource: "routing/project_routing.yml"
 

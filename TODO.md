@@ -1,21 +1,5 @@
 
-MVP Release 
-===
-
-- Screens
-    - List, Add, Edit, View Projects
-
-- Data fixture
-    - Setup dummy projects and assign to stories
-
-- Testing
-    - unit tests
-
-- Refactoring
-    - throw createNotFoundException when entity not found in controllers
-
-    
-Backlog
+Todo
 ===
 - Screens
     - Favourite icons in the listings ?
@@ -34,4 +18,11 @@ Backlog
 - Screens
     - List, Add, Edit, View Languages ?
     - All Listing - show created_at ?
+    
+- Testing
+    - unit tests
+
+- Refactoring
+    - throw createNotFoundException when entity not found in controllers
+
     

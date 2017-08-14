@@ -2,31 +2,56 @@
 
 echo 'Starting script...'
 
-# composer update - TODO add this in
-# composer update -o
+# run composer
+while true; do
+    read -p "Do you wish to run composer ? Y/N " answer
+    case $answer in
+        [Yy]* ) composer install -o; break;;
+        [Nn]* ) break;;
+        * ) echo "Please answer Y or N.";;
+    esac
+done
 
 # install assets
-php bin/console assets:install
+while true; do
+    read -p "Do you wish to dump assets ? Y/N " answer
+    case $answer in
+        [Yy]* ) php bin/console assets:install;
+                php bin/console assetic:dump; break;;
+        [Nn]* ) break;;
+        * ) echo "Please answer Y or N.";;
+    esac
+done
 
-# drop the database
-php bin/console doctrine:database:drop --force
-
-# create the database
-php bin/console doctrine:database:create
-
-# run the schema migrations
-php bin/console doctrine:migrations:migrate
+# drop database and run migrations
+while true; do
+    read -p "Do you wish to drop the database and run the migrations ? Y/N " answer
+    case $answer in
+        [Yy]* ) php bin/console doctrine:database:drop --force;
+                php bin/console doctrine:database:create;
+                php bin/console doctrine:migrations:migrate; break;;
+        [Nn]* ) break;;
+        * ) echo "Please answer Y or N.";;
+    esac
+done
 
 # run the lookup data fixtures
-php bin/console doctrine:fixtures:load --fixtures=src/AppBundle/DataFixtures/ORM/LookupData --append
-
-# do we want to run the dummy data fixtures
 while true; do
-    read -p "WARNING! You are about to install dummy data. Do you wish to continue ?" yn
-    case $yn in
+    read -p "Do you wish to run the lookup fixtures ? Y/N " answer
+    case $answer in
+        [Yy]* ) php bin/console doctrine:fixtures:load --fixtures=src/AppBundle/DataFixtures/ORM/LookupData --append; break;;
+        [Nn]* ) break;;
+        * ) echo "Please answer Y or N.";;
+    esac
+done
+
+# run the dummy data fixtures
+while true; do
+    read -p "Do you wish to run the dummy data fixtures ? Y/N " answer
+    case $answer in
         [Yy]* ) php bin/console doctrine:fixtures:load --fixtures=src/AppBundle/DataFixtures/ORM/DummyData --append; break;;
-        [Nn]* ) exit;;
-        * ) echo "Please answer yes or no.";;
+        [Nn]* ) break;;
+        * ) echo "Please answer Y or N.";;
     esac
 done
 
